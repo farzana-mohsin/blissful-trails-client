@@ -3,10 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import UsePackages from "../../../Hooks/UsePackages";
 import PackagesCards from "../../../Components/PackagesCards/PackagesCards";
+import videoUrl from "../../../../public/mixkit-palm-tree-on-a-sunny-day-4645-hd-ready.mp4";
 
 const TourismAndTravelTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const packages = UsePackages();
+  const [packages] = UsePackages();
 
   return (
     <div>
@@ -20,13 +21,21 @@ const TourismAndTravelTabs = () => {
           <Tab>Our Tour Guides</Tab>
         </TabList>
         <TabPanel>
-          <h2>overview</h2>
+          <video
+            src={videoUrl}
+            width='1400'
+            height='640'
+            controls='controls'
+            autoPlay='true'
+          >
+            {/* <source type='video/mp4' /> */}
+          </video>
         </TabPanel>
         <TabPanel>
-          {packages.map((pack, index) => (
+          {packages.slice(0, 3).map((pack, index) => (
             <PackagesCards
               key={index}
-              package={pack}
+              pack={pack}
             ></PackagesCards>
           ))}
         </TabPanel>

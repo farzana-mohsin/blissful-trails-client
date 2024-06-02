@@ -1,20 +1,34 @@
+import PropTypes from "prop-types";
+
 const PackagesCards = ({ pack }) => {
+  const { images, tourType, tripTitle, price } = pack;
+
   return (
     <div>
-      <div className='rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100'>
+      <div className='rounded-md shadow-md w-full bg-gray-900 text-gray-100'>
         <div className='flex items-center justify-between p-3'>
           <div className='flex items-center space-x-2'>
-            <img
-              src='https://source.unsplash.com/50x50/?portrait'
-              alt=''
-              className='object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700'
-            />
+            {(images || []).map((image, index) => (
+              <section
+                key={index}
+                className='py-6 bg-gray-800'
+              >
+                <div className='container flex flex-col justify-center p-4 mx-auto'>
+                  <div className='grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2'>
+                    <img
+                      className='object-cover w-full bg-gray-500 aspect-square'
+                      src={image}
+                    />
+                  </div>
+                </div>
+              </section>
+            ))}
             <div className='-space-y-1'>
-              <h2 className='text-sm font-semibold leading-none'>
-                leroy_jenkins72
+              <h2 className='text-sm font-semibold leading-none text-white'>
+                {tripTitle}
               </h2>
               <span className='inline-block text-xs leading-none text-gray-400'>
-                Somewhere
+                {price}
               </span>
             </div>
           </div>
@@ -124,7 +138,7 @@ const PackagesCards = ({ pack }) => {
           <div className='space-y-3'>
             <p className='text-sm'>
               <span className='text-base font-semibold'>leroy_jenkins72</span>
-              Nemo ea quasi debitis impedit!
+              {tourType}
             </p>
             <input
               type='text'
@@ -136,6 +150,10 @@ const PackagesCards = ({ pack }) => {
       </div>
     </div>
   );
+};
+
+PackagesCards.propTypes = {
+  pack: PropTypes.object.isRequired,
 };
 
 export default PackagesCards;

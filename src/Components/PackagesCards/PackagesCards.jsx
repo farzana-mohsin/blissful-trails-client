@@ -1,4 +1,4 @@
-const PackagesCards = () => {
+const PackagesCards = ({ pack }) => {
   return (
     <div>
       <div className='rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100'>

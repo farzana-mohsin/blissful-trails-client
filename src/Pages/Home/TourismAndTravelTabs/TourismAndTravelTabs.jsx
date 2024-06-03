@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import UsePackages from "../../../Hooks/UsePackages";
 import PackagesCards from "../../../Components/PackagesCards/PackagesCards";
-import videoUrl from "../../../../public/mixkit-palm-tree-on-a-sunny-day-4645-hd-ready.mp4";
+import videoUrl from "../../../../public/4133023-uhd_3840_2160_30fps.mp4";
 
 const TourismAndTravelTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -26,16 +26,17 @@ const TourismAndTravelTabs = () => {
             width='1400'
             height='640'
             controls='controls'
-            autoPlay='true'
+            // muted
+            // autoPlay
           >
             {/* <source type='video/mp4' /> */}
           </video>
         </TabPanel>
         <TabPanel>
-          {packages.slice(0, 3).map((pack, index) => (
+          {packages.slice(0, 3).map((item, index) => (
             <PackagesCards
               key={index}
-              pack={pack}
+              item={item}
             ></PackagesCards>
           ))}
         </TabPanel>

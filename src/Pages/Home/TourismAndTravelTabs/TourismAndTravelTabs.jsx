@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import UsePackages from "../../../Hooks/UsePackages";
 import PackagesCards from "../../../Components/PackagesCards/PackagesCards";
-import videoUrl from "../../../../public/4133023-uhd_3840_2160_30fps.mp4";
+import videoUrl from "../../../../public/4133023-uhd_3840_2160_30fps_compressed.mp4";
 
 const TourismAndTravelTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);

@@ -5,6 +5,7 @@ import TourTypeCategories from "../Pages/Home/Home/TourTypeSection/TourTypeCateg
 import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import Dashboard from "../Layout/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,13 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      // tourist routes
     ],
   },
 ]);

@@ -24,7 +24,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className=' lg:mr-0'>
+      {/* <li className=' lg:mr-0'>
         <NavLink
           to='/need-volunteers'
           className={({ isActive }) =>
@@ -33,7 +33,50 @@ const Navbar = () => {
         >
           Volunteers Needed
         </NavLink>
-      </li>
+      </li> */}
+      <div className='dropdown dropdown-hover px-2'>
+        <div
+          tabIndex={0}
+          className='text-lg font-bold m-1'
+        >
+          About Blissful Trails
+        </div>
+        <ul
+          tabIndex={0}
+          className='dropdown-content z-[3] menu p-2 w-48 bg-base-100 rounded-xl'
+        >
+          <li>
+            <NavLink
+              to='/dashboard'
+              className={({ isActive }) =>
+                isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+              }
+            >
+              Community
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/manage-my-posts'
+              className={({ isActive }) =>
+                isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+              }
+            >
+              About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/footer'
+              className={({ isActive }) =>
+                isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+              }
+            >
+              Contact Us
+            </NavLink>
+          </li>
+        </ul>
+      </div>
       {/* <li className='text-white'>
         <NavLink to='/all-items'>All Arts & Crafts</NavLink>
       </li> */}
@@ -52,12 +95,12 @@ const Navbar = () => {
             >
               <li>
                 <NavLink
-                  to='/add-post'
+                  to='/dashboard'
                   className={({ isActive }) =>
                     isActive ? "font-bold text-[#f77d5c]" : "font-bold"
                   }
                 >
-                  Add Volunteer Post
+                  Dashboard
                 </NavLink>
               </li>
               <li>
@@ -175,7 +218,7 @@ const Navbar = () => {
           {user ? (
             <div className='flex md:flex-row items-center gap-2'>
               <div
-                className='tooltip tooltip-bottom border-none bg-none rounded-full mr-2 ml-0 py-2'
+                className='tooltip tooltip-bottom border-none bg-none rounded-full mr-2 ml-0'
                 data-tip={user?.displayName || "user not found"}
               >
                 <button className='rounded-full bg-none border-none lg:w-12'>
@@ -189,6 +232,10 @@ const Navbar = () => {
                   />
                 </button>
               </div>
+              {/* <div
+                className='tooltip tooltip-bottom border-none bg-none rounded-full mr-2 ml-0'
+                data-tip={user?.email || "user not found"}
+              ></div> */}
 
               <button
                 className='btn bg-[#6faf9f] hover:bg-[#727C82] text-white px-2 py-1 lg:px-4 lg:py-2 border-2 border-[#f77d5c] text-xs lg:text-sm rounded-xl lg:mr-3'

@@ -4,6 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import UsePackages from "../../../Hooks/UsePackages";
 import PackagesCards from "../../../Components/PackagesCards/PackagesCards";
 import videoUrl from "../../../../public/4133023-uhd_3840_2160_30fps_compressed.mp4";
+import TourGuideProfile from "../../../Components/TourGuideProfile";
 
 const TourismAndTravelTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -41,7 +42,7 @@ const TourismAndTravelTabs = () => {
           ))}
         </TabPanel>
         <TabPanel>
-          <h2>our tour guides</h2>
+          <TourGuideProfile></TourGuideProfile>
         </TabPanel>
       </Tabs>
     </div>

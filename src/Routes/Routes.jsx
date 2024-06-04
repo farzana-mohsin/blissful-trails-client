@@ -29,7 +29,7 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/packagesDetails/:id",
+        path: "/packages-details/:id",
         element: <PackageDetails></PackageDetails>,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/packages/${params.id}`),

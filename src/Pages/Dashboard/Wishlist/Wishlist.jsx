@@ -80,7 +80,7 @@ const Wishlist = () => {
                 <td>{item.tourType}</td>
                 <td>${item.price}</td>
                 <td>
-                  <Link to={`/package-details/${item._id}`}>
+                  <Link to={`/packages-details/${item.packageId}`}>
                     <button>View Details</button>
                   </Link>
                 </td>

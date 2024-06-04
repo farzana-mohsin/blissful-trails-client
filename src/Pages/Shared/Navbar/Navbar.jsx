@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 // import { MdOutlineVolunteerActivism } from "react-icons/md";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -34,6 +35,7 @@ const Navbar = () => {
           Volunteers Needed
         </NavLink>
       </li> */}
+
       <div className='dropdown dropdown-hover px-2'>
         <div
           tabIndex={0}

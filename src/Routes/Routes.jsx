@@ -6,6 +6,7 @@ import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Layout/Dashboard";
+import Wishlist from "../Pages/Dashboard/Wishlist/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -48,9 +49,10 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       // tourist routes
-      // {
-      //   path: "/my-wishlist",
-      // },
+      {
+        path: "my-wishlist",
+        element: <Wishlist></Wishlist>,
+      },
     ],
   },
 ]);

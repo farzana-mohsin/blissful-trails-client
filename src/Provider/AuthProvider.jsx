@@ -54,48 +54,48 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     if (currentUser) {
-  //       // get token and store client
-  //       const userInfo = { email: currentUser.email };
-  //       axiosPublic.post("/jwt", userInfo).then((res) => {
-  //         console.log("inside jwt");
-  //         if (res.data.token) {
-  //           console.log("set token to LS");
-  //           localStorage.setItem("access-token", res.data.token);
-  //           setLoading(false);
-  //         }
-  //       });
-  //     } else {
-  //       // remove token (if token is stored in the client side)
-  //       console.log("remove token from LS");
-  //       localStorage.removeItem("access-token");
-  //       setLoading(false);
-  //     }
-  //     console.log("current user", currentUser);
-  //   });
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, [axiosPublic, auth]);
-
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
-
-      console.log(
-        "observing current user inside useEffect of AuthProvider",
-        currentUser
-      );
+      if (currentUser) {
+        // get token and store client
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          console.log("inside jwt");
+          if (res.data.token) {
+            console.log("set token to LS");
+            localStorage.setItem("access-token", res.data.token);
+            setLoading(false);
+          }
+        });
+      } else {
+        // remove token (if token is stored in the client side)
+        console.log("remove token from LS");
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
+      console.log("current user", currentUser);
     });
-
     return () => {
-      unSubscribe();
+      unsubscribe();
     };
-  }, []);
+  }, [axiosPublic, auth]);
+
+  // useEffect(() => {
+  //   const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //     setLoading(false);
+
+  //     console.log(
+  //       "observing current user inside useEffect of AuthProvider",
+  //       currentUser
+  //     );
+  //   });
+
+  //   return () => {
+  //     unSubscribe();
+  //   };
+  // }, []);
 
   const authInfo = {
     user,

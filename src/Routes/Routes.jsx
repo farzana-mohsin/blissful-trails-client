@@ -48,6 +48,9 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       // tourist routes
+      // {
+      //   path: "/my-wishlist",
+      // },
     ],
   },
 ]);

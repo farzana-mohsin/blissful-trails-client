@@ -20,7 +20,6 @@ const PackagesCards = ({ item }) => {
         packageId: _id,
         email: user.email,
         tripTitle,
-        tourType,
         price,
       };
       axiosSecure.post("/wishlist", wishlistItem).then((res) => {
@@ -34,7 +33,7 @@ const PackagesCards = ({ item }) => {
           });
           // refetch the cart to update the cart items count
           refetch();
-          navigate("/my-wishlist");
+          navigate("dashboard/my-wishlist");
         }
       });
       // send cart item

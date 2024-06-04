@@ -67,8 +67,8 @@ const Wishlist = () => {
             <tr>
               <th>#</th>
               <th>Trip Title</th>
-              <th>Tour Type</th>
               <th>Price</th>
+              <th>Details</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -79,6 +79,11 @@ const Wishlist = () => {
                 <td>{item.tripTitle}</td>
                 <td>{item.tourType}</td>
                 <td>${item.price}</td>
+                <td>
+                  <Link to={`/package-details/${item._id}`}>
+                    <button>View Details</button>
+                  </Link>
+                </td>
                 <td>
                   <button
                     onClick={() => handleDelete(item._id)}

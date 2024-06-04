@@ -81,7 +81,7 @@ const Wishlist = () => {
                 <td>${item.price}</td>
                 <td>
                   <Link to={`/packages-details/${item.packageId}`}>
-                    <button>View Details</button>
+                    <button>Package Details</button>
                   </Link>
                 </td>
                 <td>

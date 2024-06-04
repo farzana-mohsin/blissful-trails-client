@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuthHook from "../../Hooks/UseAuth";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
+import UseWishlist from "../../Hooks/UseWishlist";
 
 const PackagesCards = ({ item }) => {
   const { images, tourType, tripTitle, price, _id } = item;
@@ -10,17 +11,19 @@ const PackagesCards = ({ item }) => {
   const axiosSecure = UseAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
+  const [, refetch] = UseWishlist();
 
   const handleAddToWishlist = () => {
     if (user && user?.email) {
       // send cart item to DB
       const wishlistItem = {
-        wishlistId: _id,
+        packageId: _id,
         email: user.email,
         tripTitle,
+        tourType,
         price,
       };
-      axiosSecure.post("/carts", wishlistItem).then((res) => {
+      axiosSecure.post("/wishlist", wishlistItem).then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
             position: "center",
@@ -31,6 +34,7 @@ const PackagesCards = ({ item }) => {
           });
           // refetch the cart to update the cart items count
           refetch();
+          navigate("/my-wishlist");
         }
       });
       // send cart item
@@ -142,17 +146,16 @@ const PackagesCards = ({ item }) => {
               </span>
             </div> */}
           </div>
-          {/* <div className='space-y-3'>
+          <div className='space-y-3'>
             <p className='text-sm'>
-              <span className='text-base font-semibold'>leroy_jenkins72</span>
-              {tourType}
+              <span className='text-base font-semibold'>{tourType}</span>
             </p>
             <input
               type='text'
               placeholder='Add a comment...'
               className='w-full py-0.5 dark:bg- border-none rounded text-sm pl-0 text-gray-100'
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

@@ -4,10 +4,11 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import { Link } from "react-router-dom";
 import useAuthHook from "../../../Hooks/UseAuth";
+import UseWishlist from "../../../Hooks/UseWishlist";
 
 const Wishlist = () => {
   const { user } = useAuthHook();
-
+  const [wishlist, refetch] = UseWishlist();
   // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();
 
@@ -59,13 +60,14 @@ const Wishlist = () => {
         )} */}
       </div>
       <div className='overflow-x-auto'>
+        <h1>Wishlist page</h1>
         <table className='table w-full'>
           {/* head */}
           <thead>
             <tr>
               <th>#</th>
-              <th>Image</th>
-              <th>Name</th>
+              <th>Trip Title</th>
+              <th>Tour Type</th>
               <th>Price</th>
               <th>Action</th>
             </tr>
@@ -73,29 +75,18 @@ const Wishlist = () => {
           <tbody>
             {wishlist.map((item, index) => (
               <tr key={index}>
-                <th>{index + 1}</th>
-                <td>
-                  <div className='flex items-center gap-3'>
-                    <div className='avatar'>
-                      <div className='mask mask-squircle w-12 h-12'>
-                        <img
-                          src={item.image}
-                          alt='Avatar Tailwind CSS Component'
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>{item.name}</td>
+                <td>{index + 1}</td>
+                <td>{item.tripTitle}</td>
+                <td>{item.tourType}</td>
                 <td>${item.price}</td>
-                <th>
+                <td>
                   <button
                     onClick={() => handleDelete(item._id)}
                     className='btn btn-ghost'
                   >
                     <FaTrash className='text-red-600 text-lg'></FaTrash>
                   </button>
-                </th>
+                </td>
               </tr>
             ))}
           </tbody>

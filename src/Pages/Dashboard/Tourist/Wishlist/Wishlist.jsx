@@ -1,10 +1,9 @@
 import { FaTrash } from "react-icons/fa";
-
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import { Link } from "react-router-dom";
-import useAuthHook from "../../../Hooks/UseAuth";
-import UseWishlist from "../../../Hooks/UseWishlist";
+import useAuthHook from "../../../../Hooks/UseAuth";
+import UseWishlist from "../../../../Hooks/UseWishlist";
 
 const Wishlist = () => {
   const { user } = useAuthHook();

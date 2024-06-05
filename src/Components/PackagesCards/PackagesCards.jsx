@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuthHook from "../../Hooks/UseAuth";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
@@ -162,7 +162,7 @@ const PackagesCards = ({ item }) => {
 };
 
 PackagesCards.propTypes = {
-  pack: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default PackagesCards;

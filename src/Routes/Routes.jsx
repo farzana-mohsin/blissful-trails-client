@@ -6,7 +6,9 @@ import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Layout/Dashboard";
-import Wishlist from "../Pages/Dashboard/Wishlist/Wishlist";
+import PrivateRoutes from "./PrivateRoutes";
+import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
+import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -46,12 +48,28 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
     children: [
       // tourist routes
       {
         path: "my-wishlist",
-        element: <Wishlist></Wishlist>,
+        element: (
+          <PrivateRoutes>
+            <Wishlist></Wishlist>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "my-bookings",
+        element: (
+          <PrivateRoutes>
+            <MyBookings></MyBookings>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

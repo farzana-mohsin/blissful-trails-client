@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard";
 import PrivateRoutes from "./PrivateRoutes";
 import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
+import MyProfile from "../Pages/Dashboard/TourGuide/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <MyBookings></MyBookings>
+          </PrivateRoutes>
+        ),
+      },
+      // tourguide routes
+      {
+        path: "my-profile",
+        element: (
+          <PrivateRoutes>
+            <MyProfile></MyProfile>
           </PrivateRoutes>
         ),
       },

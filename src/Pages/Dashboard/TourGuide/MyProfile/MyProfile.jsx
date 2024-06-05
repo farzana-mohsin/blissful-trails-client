@@ -22,14 +22,14 @@ const MyProfile = () => {
     });
     if (res.data.success) {
       // now send the menu item data to the server with the image URL
-      const booking = {
-        tripTitle: data.tripTitle,
-        category: data.category,
-        price: parseFloat(data.price),
-        recipe: data.recipe,
+      const profile = {
+        education: data.education,
+        experience: data.experience,
+        contact: data.contact,
+        image: res.data.data.display_url,
       };
       //
-      const Response = await axiosSecure.post("/menu", booking);
+      const Response = await axiosSecure.post("/guides", profile);
       console.log(Response.data); // axios provides the response inside data
       if (Response.data.insertedId) {
         // show success pop up
@@ -37,18 +37,24 @@ const MyProfile = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `${data.name} is added to the menu`,
+          title: "profile is updated",
           showConfirmButton: false,
           timer: 1500,
         });
       }
+      // }
+      console.log("with img url", res.data);
     }
   };
 
   return (
     // tourguide profile
     <div>
-      <div className='my-10'>
+      <div className='my-10 flex flex-row'>
+        <img
+          src={user?.photoURL ? user?.photoURL : "Image not found"}
+          alt=''
+        />
         <h2 className='text-3xl'>
           <span>Hi, Welcome </span>
           {user?.displayName ? user?.displayName : "Back!"}
@@ -59,12 +65,23 @@ const MyProfile = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className='form-control w-full my-6'>
             <div className='label'>
-              <span className='label-text'>Name of the package</span>
+              <span className='label-text'>Education</span>
             </div>
             <input
               type='text'
-              placeholder='Package Name'
-              {...register("tripTitle", { required: true })}
+              placeholder='Education'
+              {...register("education", { required: true })}
+              className='input input-bordered w-full'
+            />
+          </label>
+          <label className='form-control w-full my-6'>
+            <div className='label'>
+              <span className='label-text'>Work Experience</span>
+            </div>
+            <input
+              type='number'
+              placeholder='Work Experience'
+              {...register("experience", { required: true })}
               className='input input-bordered w-full'
             />
           </label>
@@ -72,53 +89,21 @@ const MyProfile = () => {
           <div className='flex gap-6 items-center'>
             {/* category */}
 
-            <label className='form-control w-full my-6'>
-              <div className='label'>
-                <span className='label-text'>Category*</span>
-              </div>
-              <select
-                defaultValue='default'
-                {...register("category", { required: true })}
-                className='select select-bordered w-full'
-              >
-                <option
-                  disabled
-                  value='default'
-                >
-                  Select one category
-                </option>
-                <option value='salad'>Salad</option>
-                <option value='pizza'>Pizza</option>
-                <option value='soup'>Soup</option>
-                <option value='dessert'>Dessert</option>
-                <option value='drinks'>Drinks</option>
-              </select>
-            </label>
-
             {/* price */}
             <label className='form-control w-full my-6'>
               <div className='label'>
-                <span className='label-text'>Price*</span>
+                <span className='label-text'>Contact Details</span>
               </div>
               <input
                 type='number'
-                placeholder='Price'
-                {...register("price", { required: true })}
+                placeholder='Contact Details'
+                {...register("contact", { required: true })}
                 className='input input-bordered w-full'
               />
             </label>
           </div>
           {/* recipe details */}
-          <label className='form-control'>
-            <div className='label'>
-              <span className='label-text'>Recipe Details</span>
-            </div>
-            <textarea
-              className='textarea textarea-bordered h-24'
-              placeholder='Bio'
-              {...register("recipe")}
-            ></textarea>
-          </label>
+
           <div className='form-control w-full my-6'>
             <input
               {...register("image", { required: true })}
@@ -127,9 +112,7 @@ const MyProfile = () => {
             />
           </div>
 
-          <button className='btn btn-outline'>
-            <FaUtensils></FaUtensils> Add Item
-          </button>
+          <button className='btn btn-outline'>Add Tour Guide Profile</button>
         </form>
       </div>
     </div>

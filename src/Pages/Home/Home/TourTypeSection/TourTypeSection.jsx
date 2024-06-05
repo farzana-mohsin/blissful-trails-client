@@ -1,12 +1,12 @@
 // import { useParams } from "react-router-dom";
-import UsePackages from "../../../../Hooks/UsePackages";
+// import UsePackages from "../../../../Hooks/UsePackages";
 import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 // import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { Link } from "react-router-dom";
 
 // import { useState } from "react";
-import { FaUmbrellaBeach } from "react-icons/fa";
-import TourTypeCategories from "./TourTypeCategories";
+// import { FaUmbrellaBeach } from "react-icons/fa";
+// import TourTypeCategories from "./TourTypeCategories";
 
 const TourTypeSection = () => {
   // const categories = ["relaxed", "adventure", "seaside", "cruises"];

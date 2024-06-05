@@ -26,7 +26,7 @@ const MyProfile = () => {
         education: data.education,
         experience: data.experience,
         contact: data.contact,
-        image: res.data.data.display_url,
+        photoURL: res.data.data.display_url,
       };
       //
       const Response = await axiosSecure.post("/guides", profile);
@@ -42,16 +42,15 @@ const MyProfile = () => {
           timer: 1500,
         });
       }
-      // }
-      console.log("with img url", res.data);
     }
   };
 
   return (
-    // tourguide profile
-    <div>
-      <div className='my-10 flex flex-row'>
+    // tour guide profile
+    <div className='container mx-auto'>
+      <div className='my-10 flex flex-row mx-auto items-center gap-4'>
         <img
+          className='w-20'
           src={user?.photoURL ? user?.photoURL : "Image not found"}
           alt=''
         />

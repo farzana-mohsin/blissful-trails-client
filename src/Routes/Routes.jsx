@@ -10,6 +10,9 @@ import PrivateRoutes from "./PrivateRoutes";
 import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 import MyProfile from "../Pages/Dashboard/TourGuide/MyProfile/MyProfile";
+import GuideProfilePage from "../Pages/Dashboard/GuideProfilePage/GuideProfilePage";
+// import RequestToAdmin from "../Pages/Dashboard/Tourist/RequestToAdmin/RequestToAdmin";
+// import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -72,7 +75,15 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
-      // tourguide routes
+      // {
+      //   path: "admin-request",
+      //   element: (
+      //     <PrivateRoutes>
+      //       <RequestToAdmin></RequestToAdmin>
+      //     </PrivateRoutes>
+      //   ),
+      // },
+      // tour guide routes
       {
         path: "my-profile",
         element: (
@@ -81,6 +92,25 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+      {
+        path: "guides",
+        element: (
+          <PrivateRoutes>
+            <GuideProfilePage></GuideProfilePage>
+          </PrivateRoutes>
+        ),
+      },
+
+      // admin routes
+      // {
+      //   path: "manage-users",
+      //   element: (
+      //     <PrivateRoutes>
+      //       <ManageUsers></ManageUsers>
+      //     </PrivateRoutes>
+      //   ),
+      //   loader: () => fetch(`${import.meta.env.VITE_API_URL}/admin-request`),
+      // },
     ],
   },
 ]);

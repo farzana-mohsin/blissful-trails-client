@@ -26,10 +26,13 @@ const SignUp = () => {
         .then(() => {
           // create user entry in the DB
           console.log("user profile updated");
+          console.log("user data", data);
           const userInfo = {
             name: data.name,
             email: data.email,
+            uid: data.uid,
           };
+
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
               console.log("user added to the database");

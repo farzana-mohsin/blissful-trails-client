@@ -56,13 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/guides",
-        element: (
-          <PrivateRoutes>
-            <GuideProfilePage></GuideProfilePage>
-          </PrivateRoutes>
-        ),
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/guides/${params.id}`),
+        element: <GuideProfilePage></GuideProfilePage>,
       },
       {
         path: "/guides/:id",

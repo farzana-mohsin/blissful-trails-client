@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
+import BookingForm from "../../Components/BookingForm/BookingForm";
+
 // import TourPlan from "../../Components/TourPlan/TourPlan";
-// import BookingForm from "./BookingForm";
 
 const PackageDetails = () => {
   const item = useLoaderData();
@@ -33,7 +34,10 @@ const PackageDetails = () => {
           </ul>
         </div>
       </section>
-      {/* <BookingForm></BookingForm> */}
+      <BookingForm
+        price={price}
+        tripTitle={tripTitle}
+      ></BookingForm>
     </div>
   );
 };

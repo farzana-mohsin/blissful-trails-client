@@ -17,6 +17,7 @@ const GuideProfilePage = () => {
   return (
     <div>
       <div>
+        Guide profile page
         <div className='flex justify-evenly'></div>
         <div className='overflow-x-auto'>
           <h1>Tour Guides Profile</h1>

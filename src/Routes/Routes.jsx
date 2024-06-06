@@ -13,6 +13,10 @@ import MyProfile from "../Pages/Dashboard/TourGuide/MyProfile/MyProfile";
 import GuideProfilePage from "../Pages/Dashboard/GuideProfilePage/GuideProfilePage";
 import RequestToAdmin from "../Pages/Dashboard/Tourist/RequestToAdmin/RequestToAdmin";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
+import AddPackage from "../Pages/Dashboard/Admin/AddPackage/AddPackage";
+import TourGuideTours from "../Pages/Dashboard/TourGuide/TourGuideTours/TourGuideTours";
+import TouristProfile from "../Pages/Dashboard/Tourist/TouristProfile/TouristProfile";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +64,14 @@ const router = createBrowserRouter([
     children: [
       // tourist routes
       {
+        path: "tourist-profile",
+        element: (
+          <PrivateRoutes>
+            <TouristProfile></TouristProfile>
+          </PrivateRoutes>
+        ),
+      },
+      {
         path: "my-wishlist",
         element: (
           <PrivateRoutes>
@@ -94,15 +106,41 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "guides",
+        path: "guide-tours",
         element: (
           <PrivateRoutes>
-            <GuideProfilePage></GuideProfilePage>
+            <TourGuideTours></TourGuideTours>
           </PrivateRoutes>
+        ),
+      },
+      {
+        path: "guides",
+        element: (
+          // <PrivateRoutes>
+          <GuideProfilePage></GuideProfilePage>
+          // </PrivateRoutes>
         ),
       },
 
       // admin routes
+      {
+        path: "admin-profile",
+        element: (
+          <PrivateRoutes>
+            <AdminProfile></AdminProfile>
+          </PrivateRoutes>
+        ),
+        // loader: () => fetch(`${import.meta.env.VITE_API_URL}/pending-requests`),
+      },
+      {
+        path: "admin-package",
+        element: (
+          <PrivateRoutes>
+            <AddPackage></AddPackage>
+          </PrivateRoutes>
+        ),
+        // loader: () => fetch(`${import.meta.env.VITE_API_URL}/pending-requests`),
+      },
       {
         path: "manage-users",
         element: (

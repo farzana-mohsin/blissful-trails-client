@@ -1,19 +1,82 @@
-import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
-// import MyProfile from "../Pages/Dashboard/TourGuide/MyProfile/MyProfile";
-import RequestToAdmin from "../Pages/Dashboard/Tourist/RequestToAdmin/RequestToAdmin";
+import { NavLink, Outlet } from "react-router-dom";
+import { FaHome, FaPlane, FaThList, FaUsers } from "react-icons/fa";
 // import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
 const Dashboard = () => {
-  return (
-    <div>
-      <h2>this is dashboard</h2>
-      {/* <Wishlist></Wishlist> */}
-      <RequestToAdmin></RequestToAdmin>
-      {/* <MyBookings></MyBookings> */}
-      {/* <MyProfile></MyProfile> */}
+  const isAdmin = true;
+  const isTourGuide = false;
 
-      <ManageUsers></ManageUsers>
+  const adminSections = (
+    <div>
+      <li className=''>
+        <NavLink to='/dashboard/admin-profile'>
+          <span className='flex'>
+            <FaHome></FaHome>
+          </span>
+          Admin Profile
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/dashboard/add-package'>
+          <FaThList></FaThList> Add Package
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/dashboard/manage-users'>
+          <FaUsers></FaUsers> Manage Users
+        </NavLink>
+      </li>
+    </div>
+  );
+
+  const guideSections = (
+    <>
+      <li>
+        <NavLink to='/dashboard/my-profile'>
+          <FaHome></FaHome> Tour Guide Profile
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/dashboard/guide-tours'>
+          <FaPlane></FaPlane> Tour Guide Assigned Tours
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const touristSections = (
+    <div className='flex'>
+      <li>
+        <NavLink to='/dashboard/tourist-profile'>
+          <FaHome></FaHome> Tourist Profile
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/dashboard/my-wishlist'>
+          <FaPlane></FaPlane> Tourist Wishlist
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/dashboard/my-bookings'>
+          <FaPlane></FaPlane> Tourist Bookings
+        </NavLink>
+      </li>
+    </div>
+  );
+
+  return (
+    <div className=' mx-auto flex'>
+      <div className="className='w-72 min-h-screen bg-amber-400 mr-10 px-16 list-none ">
+        {isAdmin
+          ? adminSections
+          : isTourGuide
+          ? guideSections
+          : touristSections}
+      </div>
+      <div className='flex-1 p-8'>
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 };

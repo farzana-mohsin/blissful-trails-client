@@ -12,10 +12,12 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UseBooking from "../../Hooks/UseBooking";
+import UseTourGuide from "../../Hooks/UseTourGuide";
 
 const BookingForm = ({ price, tripTitle }) => {
+  const [guides] = UseTourGuide();
   const { user } = useAuthHook();
-  const { handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const [, refetch] = UseBooking();
 
@@ -44,6 +46,7 @@ const BookingForm = ({ price, tripTitle }) => {
         price: price,
         startDate: dates.startDate,
         endDate: dates.endDate,
+        status: "review",
       };
       //
       const response = await axiosSecure.post("/bookings", booking);
@@ -104,6 +107,32 @@ const BookingForm = ({ price, tripTitle }) => {
             <p>Price: {price}</p>
             <p>Name of the package: {tripTitle}</p>
             {/* tour guide dropdown */}
+
+            <label className='form-control w-full my-6'>
+              <div className='label'>
+                <span className='label-text'>Select Tour Guide</span>
+              </div>
+              <select
+                defaultValue='default'
+                {...register("tourGuide", { required: true })}
+                className='select select-bordered w-full'
+              >
+                <option
+                  disabled
+                  value='default'
+                >
+                  Select a tour guide
+                </option>
+                {guides.map((guide, index) => (
+                  <option
+                    key={index}
+                    value={guide._id}
+                  >
+                    {guide.name}
+                  </option>
+                ))}
+              </select>
+            </label>
 
             {/* <label className='form-control w-full my-6'>
               <div className='label'>

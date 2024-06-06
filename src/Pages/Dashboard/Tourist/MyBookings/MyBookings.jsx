@@ -10,6 +10,8 @@ const MyBookings = () => {
   const [booking] = UseBooking();
   // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();
+  const isInReview = false;
+  const isAccepted = false;
 
   // const handleDelete = (id) => {
   //   Swal.fire({
@@ -67,7 +69,7 @@ const MyBookings = () => {
               <th>#</th>
               <th>Trip Title</th>
               <th>Price</th>
-              <th>Details</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -77,11 +79,22 @@ const MyBookings = () => {
                 <td>{index + 1}</td>
                 <td>{item.tripTitle}</td>
                 <td>${item.price}</td>
-                {/* <td>
-                  <Link to={`/packages-details/${item.packageId}`}>
-                    <button>Package Details</button>
-                  </Link>
-                </td> */}
+
+                <td>
+                  {isInReview ? <p>In Review</p> : <p>Accepted/Rejected</p>}
+                </td>
+                <td>
+                  {isAccepted ? (
+                    <button className='btn btn-outline rounded-none'>
+                      Pay
+                    </button>
+                  ) : (
+                    <button className='btn btn-outline rounded-none'>
+                      Cancel Booking
+                    </button>
+                  )}
+                </td>
+
                 <td>
                   {/* <button
                     onClick={() => handleDelete(item._id)}

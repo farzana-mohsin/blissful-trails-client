@@ -6,9 +6,9 @@ const UseBooking = () => {
   const axiosSecure = UseAxiosSecure();
   const { user } = useAuthHook();
   const { refetch, data: booking = [] } = useQuery({
-    queryKey: ["booking", user?.email],
+    queryKey: ["bookings", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/booking?email=${user.email}`);
+      const res = await axiosSecure.get(`/bookings?email=${user.email}`);
       return res.data;
     },
   });

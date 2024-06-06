@@ -1,92 +1,102 @@
-import PropTypes from "prop-types";
-// import Button from "../Shared/Button/Button";
-import { useState } from "react";
-import { DateRange } from "react-date-range";
-// import { differenceInCalendarDays } from "date-fns";
-import BookingModal from "../../../../Modal/BookingModal";
-import useAuth from "../../../../Hooks/UseAuth";
-const MyBookings = ({ room, refetch }) => {
-  const { user } = useAuth();
-  const [isOpen, setIsOpen] = useState(false);
-  const [state, setState] = useState([
-    {
-      startDate: new Date(room.from),
-      endDate: new Date(room.to),
-      key: "selection",
-    },
-  ]);
+import { FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+import useAuthHook from "../../../../Hooks/UseAuth";
+import UseBooking from "../../../../Hooks/UseBooking";
 
-  // total days * price
-  // const totalPrice =
-  //   parseInt(differenceInCalendarDays(new Date(room.to), new Date(room.from))) *
-  //   room?.price;
-  // console.log(totalPrice);
+const MyBookings = () => {
+  const { user } = useAuthHook();
+  const [booking] = UseBooking();
+  // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const axiosSecure = useAxiosSecure();
+
+  // const handleDelete = (id) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, delete it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       axiosSecure.delete(`/booking/${id}`).then((res) => {
+  //         if (res.data.deletedCount > 0) {
+  //           refetch();
+  //           Swal.fire({
+  //             title: "Deleted!",
+  //             text: "Your item has been deleted.",
+  //             icon: "success",
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // };
+
   return (
-    <div className='rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white'>
-      <div className='flex items-center gap-1 p-4'>
-        <div className='text-2xl font-semibold'>$ {room?.price}</div>
-        <div className='font-light text-neutral-600'>/night</div>
+    <div>
+      <div className='flex justify-evenly'>
+        <h2 className='text-4xl'>Items: {booking.length}</h2>
+        {/* <h2 className='text-4xl'>Total Price: {totalPrice}</h2> */}
+        {/* {wishlist.length ? (
+          <>
+            <Link to='/dashboard/payment'>
+              <button className='btn btn-outline'>Pay</button>
+            </Link>
+          </>
+        ) : (
+          <>
+            <button
+              disabled
+              className='btn btn-outline'
+            >
+              Pay
+            </button>
+          </>
+        )} */}
       </div>
-      <hr />
-      <div className='flex justify-center'>
-        {/* Calender */}
-        <DateRange
-          showDateDisplay={false}
-          rangeColors={["#F6536D"]}
-          onChange={(item) => {
-            console.log(item);
-            setState([
-              {
-                startDate: new Date(room.from),
-                endDate: new Date(room.to),
-                key: "selection",
-              },
-            ]);
-          }}
-          moveRangeOnFirstSelection={false}
-          ranges={state}
-        />
-      </div>
-      <hr />
-      <div className='p-4'>
-        <button
-          disabled={room?.booked}
-          onClick={() => setIsOpen(true)}
-          label={room?.booked ? "Booked" : "Reserve"}
-        />
-      </div>
-
-      {/* Modal */}
-      <BookingModal
-        isOpen={isOpen}
-        refetch={refetch}
-        closeModal={closeModal}
-        bookingInfo={{
-          ...room,
-          // price: totalPrice,
-          guest: {
-            name: user?.displayName,
-            email: user?.email,
-            image: user?.photoURL,
-          },
-        }}
-      />
-      <hr />
-      <div className='p-4 flex items-center justify-between font-semibold text-lg'>
-        <div>Total</div>
-        {/* <div>${totalPrice}</div> */}
+      <div className='overflow-x-auto'>
+        <h1>My Bookings</h1>
+        <table className='table w-full'>
+          {/* head */}
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Trip Title</th>
+              <th>Price</th>
+              <th>Details</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {booking.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.tripTitle}</td>
+                <td>${item.price}</td>
+                {/* <td>
+                  <Link to={`/packages-details/${item.packageId}`}>
+                    <button>Package Details</button>
+                  </Link>
+                </td> */}
+                <td>
+                  {/* <button
+                    onClick={() => handleDelete(item._id)}
+                    className='btn btn-ghost'
+                  >
+                    <FaTrash className='text-red-600 text-lg'></FaTrash>
+                  </button> */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
-};
-
-MyBookings.propTypes = {
-  room: PropTypes.object,
-  refetch: PropTypes.func,
 };
 
 export default MyBookings;

@@ -5,7 +5,7 @@ import { FaHome, FaPlane, FaThList, FaUsers } from "react-icons/fa";
 
 const Dashboard = () => {
   const isAdmin = false;
-  const isTourGuide = true;
+  const isTourGuide = false;
 
   const adminSections = (
     <div>

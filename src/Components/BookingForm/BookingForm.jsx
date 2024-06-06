@@ -10,10 +10,14 @@ import Swal from "sweetalert2";
 import useAuthHook from "../../Hooks/UseAuth";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import UseBooking from "../../Hooks/UseBooking";
 
 const BookingForm = ({ price, tripTitle }) => {
   const { user } = useAuthHook();
-  const { register, handleSubmit, reset } = useForm();
+  const { handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+  const [, refetch] = UseBooking();
 
   const [dates, setDates] = useState({
     startDate: new Date(),
@@ -29,29 +33,48 @@ const BookingForm = ({ price, tripTitle }) => {
   // const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const onSubmit = async () => {
-    const booking = {
-      tourist: {
-        email: user?.email,
-        name: user?.displayName,
-        photo: user?.photoURL,
-      },
-      tripTitle: tripTitle,
-      price: price,
-      startDate: dates.startDate,
-      endDate: dates.endDate,
-    };
-    //
-    const response = await axiosSecure.post("/booking", booking);
-    console.log(response.data); // axios provides the response inside data
-    if (response.data.insertedId) {
-      // show success pop up
-      reset();
+    if (user && user?.email) {
+      const booking = {
+        tourist: {
+          email: user?.email,
+          name: user?.displayName,
+          photo: user?.photoURL,
+        },
+        tripTitle: tripTitle,
+        price: price,
+        startDate: dates.startDate,
+        endDate: dates.endDate,
+      };
+      //
+      const response = await axiosSecure.post("/booking", booking);
+      console.log(response.data); // axios provides the response inside data
+      if (response.data.insertedId) {
+        // show success pop up
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${tripTitle} is added to your booking`,
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        refetch();
+        navigate("dashboard/my-bookings");
+      }
+    } else {
       Swal.fire({
-        position: "center",
-        icon: "success",
-        title: `${tripTitle} is added to your booking`,
-        showConfirmButton: false,
-        timer: 2500,
+        title: "You're not logged in",
+        text: "Please log in to add package to your booking list",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes login!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // send the user to the login page
+          navigate("/login", { state: { from: location } });
+        }
       });
     }
   };
@@ -120,6 +143,8 @@ const BookingForm = ({ price, tripTitle }) => {
               onChange={(item) => handleDates(item)}
               moveRangeOnFirstSelection={false}
               ranges={[dates]}
+              minDate={new Date()}
+              // minDate={toDate}
             />
           </div>
 

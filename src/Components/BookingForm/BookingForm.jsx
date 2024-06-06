@@ -46,7 +46,7 @@ const BookingForm = ({ price, tripTitle }) => {
         endDate: dates.endDate,
       };
       //
-      const response = await axiosSecure.post("/booking", booking);
+      const response = await axiosSecure.post("/bookings", booking);
       console.log(response.data); // axios provides the response inside data
       if (response.data.insertedId) {
         // show success pop up
@@ -59,7 +59,7 @@ const BookingForm = ({ price, tripTitle }) => {
           timer: 2500,
         });
         refetch();
-        navigate("dashboard/my-bookings");
+        navigate("/dashboard/my-bookings");
       }
     } else {
       Swal.fire({

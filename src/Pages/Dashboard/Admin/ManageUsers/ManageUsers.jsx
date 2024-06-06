@@ -88,6 +88,7 @@ const ManageUsers = () => {
 
   return (
     <div>
+      <h2>manage users</h2>
       {pendingRequests?.map((request, index) => (
         <div key={index}>
           {request?.status === "pending" ? (

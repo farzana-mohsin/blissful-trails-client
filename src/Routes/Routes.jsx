@@ -10,13 +10,15 @@ import PrivateRoutes from "./PrivateRoutes";
 import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 import MyProfile from "../Pages/Dashboard/TourGuide/MyProfile/MyProfile";
-import GuideProfilePage from "../Pages/Dashboard/GuideProfilePage/GuideProfilePage";
+
 import RequestToAdmin from "../Pages/Dashboard/Tourist/RequestToAdmin/RequestToAdmin";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
 import AddPackage from "../Pages/Dashboard/Admin/AddPackage/AddPackage";
 import TourGuideTours from "../Pages/Dashboard/TourGuide/TourGuideTours/TourGuideTours";
 import TouristProfile from "../Pages/Dashboard/Tourist/TouristProfile/TouristProfile";
+import GuideProfilePage from "../Pages/GuideProfilePage/GuideProfilePage";
+import GuideProfileDetails from "../Components/GuideProfileDetails/GuideProfileDetails";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,22 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/guides",
+        element: (
+          <PrivateRoutes>
+            <GuideProfilePage></GuideProfilePage>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/guides/${params.id}`),
+      },
+      {
+        path: "/guides/:id",
+        element: <GuideProfileDetails></GuideProfileDetails>,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/guides/${params.id}`),
       },
     ],
   },
@@ -111,14 +129,6 @@ const router = createBrowserRouter([
           <PrivateRoutes>
             <TourGuideTours></TourGuideTours>
           </PrivateRoutes>
-        ),
-      },
-      {
-        path: "guides",
-        element: (
-          // <PrivateRoutes>
-          <GuideProfilePage></GuideProfilePage>
-          // </PrivateRoutes>
         ),
       },
 

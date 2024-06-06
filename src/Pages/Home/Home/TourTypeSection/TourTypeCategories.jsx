@@ -91,7 +91,7 @@ const TourTypeCategories = () => {
               </div>
 
               <div className='flex items-center mt-4 text-gray-700 dark:text-gray-200 justify-end'>
-                <Link to={`/packagesDetails/${item._id}`}>
+                <Link to={`/packages-details/${item._id}`}>
                   <button className='btn btn-outline'>View Package</button>
                 </Link>
               </div>

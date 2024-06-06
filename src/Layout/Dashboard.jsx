@@ -4,8 +4,8 @@ import { FaHome, FaPlane, FaThList, FaUsers } from "react-icons/fa";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
 const Dashboard = () => {
-  const isAdmin = true;
-  const isTourGuide = false;
+  const isAdmin = false;
+  const isTourGuide = true;
 
   const adminSections = (
     <div>
@@ -18,7 +18,7 @@ const Dashboard = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to='/dashboard/add-package'>
+        <NavLink to='/dashboard/admin-package'>
           <FaThList></FaThList> Add Package
         </NavLink>
       </li>
@@ -67,7 +67,7 @@ const Dashboard = () => {
 
   return (
     <div className=' mx-auto flex'>
-      <div className="className='w-72 min-h-screen bg-amber-400 mr-10 px-16 list-none ">
+      <div className="className='w-72 min-h-screen bg-amber-400 mr-10 p-16 list-none ">
         {isAdmin
           ? adminSections
           : isTourGuide

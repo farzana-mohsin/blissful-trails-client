@@ -5,8 +5,8 @@ import { FaHome, FaPlane, FaThList, FaUsers, FaSearch } from "react-icons/fa";
 
 const Dashboard = () => {
   const isAdmin = false;
-  // const isTourGuide = false;
-  const isTourGuide = true;
+  // const isTourGuide = true;
+  const isTourGuide = false;
 
   const adminSections = (
     <div>
@@ -47,7 +47,7 @@ const Dashboard = () => {
   );
 
   const touristSections = (
-    <div className='flex'>
+    <div className=''>
       <li>
         <NavLink to='/dashboard/tourist-profile'>
           <FaHome></FaHome> Tourist Profile
@@ -69,7 +69,7 @@ const Dashboard = () => {
   return (
     <div>
       <div className=' mx-auto flex'>
-        <div className="className='w-72 min-h-screen bg-amber-400 mr-6 p-6 list-none ">
+        <div className="className='w-56 min-h-screen bg-amber-400 mr-6 p-6 list-none ">
           <ul className='menu'>
             {isAdmin
               ? adminSections
@@ -89,9 +89,9 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
-      </div>
-      <div className='flex-1 p-8'>
-        <Outlet></Outlet>
+        <div className='flex-1 p-8'>
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

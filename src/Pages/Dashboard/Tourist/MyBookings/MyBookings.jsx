@@ -8,8 +8,8 @@ import UseBooking from "../../../../Hooks/UseBooking";
 const MyBookings = () => {
   const { user } = useAuthHook();
   const [booking] = UseBooking();
-  // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-  const axiosSecure = useAxiosSecure();
+  const totalPrice = booking.reduce((total, item) => total + item.price, 0);
+  // const axiosSecure = useAxiosSecure();
   const isInReview = false;
   const isAccepted = false;
 
@@ -42,7 +42,7 @@ const MyBookings = () => {
     <div>
       <div className='flex justify-evenly'>
         <h2 className='text-4xl'>Items: {booking.length}</h2>
-        {/* <h2 className='text-4xl'>Total Price: {totalPrice}</h2> */}
+        <h2 className='text-4xl'>Total Price: ${totalPrice}</h2>
         {/* {wishlist.length ? (
           <>
             <Link to='/dashboard/payment'>
@@ -86,11 +86,11 @@ const MyBookings = () => {
                 <td>
                   {isAccepted ? (
                     <button className='btn btn-outline rounded-none'>
-                      Pay
+                      Cancel Booking
                     </button>
                   ) : (
                     <button className='btn btn-outline rounded-none'>
-                      Cancel Booking
+                      Pay
                     </button>
                   )}
                 </td>

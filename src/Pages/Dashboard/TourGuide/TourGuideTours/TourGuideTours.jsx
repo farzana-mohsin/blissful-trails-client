@@ -5,9 +5,12 @@ import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import useAuthHook from "../../../../Hooks/UseAuth";
 
 import UseBookingReview from "../../../../Hooks/UseBookingReview";
+import { useState } from "react";
+import UseBooking from "../../../../Hooks/UseBooking";
 
 const TourGuideTours = () => {
   const { user } = useAuthHook();
+  const [isAccepted, setIsAccepted] = useState(false);
   const [review, refetch] = UseBookingReview();
   // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();
@@ -34,6 +37,25 @@ const TourGuideTours = () => {
           }
         });
       }
+    });
+  };
+
+  const handleAccept = (id) => {
+    const reviewStatus = {
+      status: "accepted",
+    };
+    axiosSecure.patch(`/bookings/${id}`, reviewStatus).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: 'status has been updated to "Accepted',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        // refetch the cart to update the cart items count
+      }
+      setIsAccepted(true);
     });
   };
 
@@ -78,9 +100,18 @@ const TourGuideTours = () => {
                 <td>{item.tripTitle}</td>
                 <td>${item.price}</td>
                 <td>
-                  <button className='btn btn-outline rounded-none'>
-                    Accept
-                  </button>
+                  {isAccepted ? (
+                    <button disabled>Accepted</button>
+                  ) : (
+                    <button
+                      onClick={() => handleAccept(item._id)}
+                      className='btn btn-outline rounded-none'
+                    >
+                      Accept
+                    </button>
+                  )}
+                </td>
+                <td>
                   <button
                     onClick={() => handleReject(item._id)}
                     className='btn btn-outline rounded-none'

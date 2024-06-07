@@ -1,12 +1,8 @@
-import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
-
-import useAuthHook from "../../../../Hooks/UseAuth";
 import UseBooking from "../../../../Hooks/UseBooking";
 
 const MyBookings = () => {
-  const { user } = useAuthHook();
   const [booking, refetch] = UseBooking();
   const totalPrice = booking.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();

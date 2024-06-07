@@ -10,7 +10,6 @@ const MyProfile = () => {
   const { user } = useAuthHook();
   const axiosSecure = UseAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const navigate = useNavigate();
 
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -25,7 +24,8 @@ const MyProfile = () => {
     if (res.data.success) {
       // now send the menu item data to the server with the image URL
       const profile = {
-        name: user.displayName,
+        name: user?.displayName,
+        email: user?.email,
         education: data.education,
         experience: data.experience,
         contact: data.contact,
@@ -108,7 +108,7 @@ const MyProfile = () => {
 
           <div className='form-control w-full my-6'>
             <input
-              {...register("image", { required: true })}
+              {...register("image")}
               type='file'
               className='file-input w-full'
             />

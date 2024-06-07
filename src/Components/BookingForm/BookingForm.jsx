@@ -9,7 +9,7 @@ import useAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import useAuthHook from "../../Hooks/UseAuth";
 import SectionTitle from "../SectionTitle/SectionTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UseBooking from "../../Hooks/UseBooking";
 import UseTourGuide from "../../Hooks/UseTourGuide";
@@ -20,6 +20,11 @@ const BookingForm = ({ price, tripTitle }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const [, refetch] = UseBooking();
+  const [selectedOption, setSelectedOption] = useState(guides?.[0]?.email);
+
+  useEffect(() => {
+    setSelectedOption(guides?.[0]?.email);
+  }, [guides]);
 
   const [dates, setDates] = useState({
     startDate: new Date(),
@@ -47,6 +52,7 @@ const BookingForm = ({ price, tripTitle }) => {
         startDate: dates.startDate,
         endDate: dates.endDate,
         status: "review",
+        guides: selectedOption,
       };
       //
       const response = await axiosSecure.post("/bookings", booking);
@@ -84,6 +90,7 @@ const BookingForm = ({ price, tripTitle }) => {
 
   return (
     <div>
+      selectedOption: {selectedOption}
       <SectionTitle
         heading='Booking Form'
         subHeading='Confirm your booking by filling out the form!'
@@ -113,20 +120,13 @@ const BookingForm = ({ price, tripTitle }) => {
                 <span className='label-text'>Select Tour Guide</span>
               </div>
               <select
-                defaultValue='default'
-                {...register("tourGuide", { required: true })}
-                className='select select-bordered w-full'
+                value={selectedOption}
+                onChange={(e) => setSelectedOption(e.target?.value)}
               >
-                <option
-                  disabled
-                  value='default'
-                >
-                  Select a tour guide
-                </option>
-                {guides.map((guide, index) => (
+                {guides.map((guide) => (
                   <option
-                    key={index}
-                    value={guide._id}
+                    key={guide?.value}
+                    value={guide?.email}
                   >
                     {guide.name}
                   </option>

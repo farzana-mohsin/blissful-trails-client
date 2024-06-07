@@ -7,36 +7,36 @@ import UseBooking from "../../../../Hooks/UseBooking";
 
 const MyBookings = () => {
   const { user } = useAuthHook();
-  const [booking] = UseBooking();
+  const [booking, refetch] = UseBooking();
   const totalPrice = booking.reduce((total, item) => total + item.price, 0);
-  // const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const isInReview = false;
-  const isAccepted = false;
+  const isAccepted = true;
 
-  // const handleDelete = (id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       axiosSecure.delete(`/bookings/${id}`).then((res) => {
-  //         if (res.data.deletedCount > 0) {
-  //           refetch();
-  //           Swal.fire({
-  //             title: "Deleted!",
-  //             text: "Your item has been deleted.",
-  //             icon: "success",
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
+  const handleCancelBooking = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/bookings/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your booking has been canceled.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -85,7 +85,10 @@ const MyBookings = () => {
                 </td>
                 <td>
                   {isAccepted ? (
-                    <button className='btn btn-outline rounded-none'>
+                    <button
+                      onClick={() => handleCancelBooking(item._id)}
+                      className='btn btn-outline rounded-none'
+                    >
                       Cancel Booking
                     </button>
                   ) : (

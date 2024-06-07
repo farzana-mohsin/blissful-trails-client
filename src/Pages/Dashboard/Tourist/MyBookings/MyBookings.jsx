@@ -1,13 +1,14 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import UseBooking from "../../../../Hooks/UseBooking";
+import { FaPaypal, FaTrash } from "react-icons/fa";
 
 const MyBookings = () => {
   const [booking, refetch] = UseBooking();
   const totalPrice = booking.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();
-  const isInReview = false;
-  const isAccepted = true;
+  // const isInReview = false;
+  // const isAccepted = true;
 
   const handleCancelBooking = (id) => {
     Swal.fire({
@@ -20,11 +21,14 @@ const MyBookings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/bookings/${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
+        const reviewStatus = {
+          status: "canceled",
+        };
+        axiosSecure.patch(`/bookings/${id}`, reviewStatus).then((res) => {
+          if (res.data.modifiedCount > 0) {
             refetch();
             Swal.fire({
-              title: "Deleted!",
+              title: "Canceled!",
               text: "Your booking has been canceled.",
               icon: "success",
             });
@@ -33,6 +37,8 @@ const MyBookings = () => {
       }
     });
   };
+
+  const handlePayment = () => {};
 
   return (
     <div>
@@ -77,30 +83,33 @@ const MyBookings = () => {
                 <td>${item.price}</td>
 
                 <td>
-                  {isInReview ? <p>In Review</p> : <p>Accepted/Rejected</p>}
-                </td>
-                <td>
-                  {isAccepted ? (
-                    <button
-                      onClick={() => handleCancelBooking(item._id)}
-                      className='btn btn-outline rounded-none'
-                    >
-                      Cancel Booking
-                    </button>
+                  {item.status === "review" ? (
+                    <p>Under Review</p>
+                  ) : item.status === "accepted" ? (
+                    <p>Accepted</p>
                   ) : (
-                    <button className='btn btn-outline rounded-none'>
-                      Pay
-                    </button>
+                    <p>Rejected</p>
                   )}
                 </td>
 
                 <td>
-                  {/* <button
-                    onClick={() => handleDelete(item._id)}
-                    className='btn btn-ghost'
-                  >
-                    <FaTrash className='text-red-600 text-lg'></FaTrash>
-                  </button> */}
+                  {item.status === "review" ? (
+                    <button
+                      onClick={() => handleCancelBooking(item._id)}
+                      className='btn btn-ghost'
+                    >
+                      <FaTrash className='text-red-600 text-lg'></FaTrash>
+                    </button>
+                  ) : item.status === "accepted" ? (
+                    <button
+                      onClick={() => handlePayment(item._id)}
+                      className='btn btn-ghost'
+                    >
+                      <FaPaypal className='text-red-600 text-lg'>Pay</FaPaypal>
+                    </button>
+                  ) : (
+                    ""
+                  )}
                 </td>
               </tr>
             ))}

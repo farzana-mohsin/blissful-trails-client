@@ -19,6 +19,7 @@ import TourGuideTours from "../Pages/Dashboard/TourGuide/TourGuideTours/TourGuid
 import TouristProfile from "../Pages/Dashboard/Tourist/TouristProfile/TouristProfile";
 import GuideProfilePage from "../Pages/GuideProfilePage/GuideProfilePage";
 import GuideProfileDetails from "../Components/GuideProfileDetails/GuideProfileDetails";
+import Payment from "../Pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
             <RequestToAdmin></RequestToAdmin>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
 
       // tour guide routes

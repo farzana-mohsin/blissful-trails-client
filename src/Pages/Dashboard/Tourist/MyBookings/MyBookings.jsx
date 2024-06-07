@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import UseBooking from "../../../../Hooks/UseBooking";
 import { FaPaypal, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MyBookings = () => {
   const [booking, refetch] = UseBooking();
@@ -101,12 +102,13 @@ const MyBookings = () => {
                       <FaTrash className='text-red-600 text-lg'></FaTrash>
                     </button>
                   ) : item.status === "accepted" ? (
-                    <button
-                      onClick={() => handlePayment(item._id)}
-                      className='btn btn-ghost'
-                    >
-                      <FaPaypal className='text-red-600 text-lg'>Pay</FaPaypal>
-                    </button>
+                    <Link to='/dashboard/payment'>
+                      <button className='btn btn-ghost'>
+                        <FaPaypal className='text-red-600 text-lg'>
+                          Pay
+                        </FaPaypal>
+                      </button>
+                    </Link>
                   ) : (
                     ""
                   )}

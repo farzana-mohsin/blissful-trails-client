@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaPlane, FaThList, FaUsers } from "react-icons/fa";
+import { FaHome, FaPlane, FaThList, FaUsers, FaSearch } from "react-icons/fa";
 // import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
@@ -67,13 +67,28 @@ const Dashboard = () => {
   );
 
   return (
-    <div className=' mx-auto flex'>
-      <div className="className='w-72 min-h-screen bg-amber-400 mr-10 p-16 list-none ">
-        {isAdmin
-          ? adminSections
-          : isTourGuide
-          ? guideSections
-          : touristSections}
+    <div>
+      <div className=' mx-auto flex'>
+        <div className="className='w-72 min-h-screen bg-amber-400 mr-6 p-6 list-none ">
+          <ul className='menu'>
+            {isAdmin
+              ? adminSections
+              : isTourGuide
+              ? guideSections
+              : touristSections}
+            <div className='divider'></div>
+            <li>
+              <NavLink to='/'>
+                <FaHome></FaHome> Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/packages/:tourType'>
+                <FaSearch></FaSearch> Packages
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className='flex-1 p-8'>
         <Outlet></Outlet>

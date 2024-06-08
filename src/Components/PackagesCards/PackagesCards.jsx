@@ -56,8 +56,8 @@ const PackagesCards = ({ item }) => {
   };
 
   return (
-    <div className='my-10'>
-      <div className='rounded-md shadow-md w-full bg-gray-100 text-gray-900'>
+    <div className='my-10 w-full'>
+      <div className='rounded-md shadow-md w-full text-gray-900'>
         <div className='flex items-center justify-between p-3'>
           <div className='flex flex-row items-center space-x-2'>
             <div className='-space-y-1'>
@@ -145,15 +145,13 @@ const PackagesCards = ({ item }) => {
               </span>
             </div> */}
           </div>
-          <div className='space-y-3'>
+          <div className=' flex items-center justify-between mx-2'>
             <p className='text-sm'>
               <span className='text-base font-semibold'>{tourType}</span>
             </p>
-            <input
-              type='text'
-              placeholder='Add a comment...'
-              className='w-full py-0.5 dark:bg- border-none rounded text-sm pl-0 text-gray-100'
-            />
+            <p className='text-sm'>
+              <span className='text-base font-semibold'>View Package</span>
+            </p>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ const useGuide = () => {
     queryFn: async () => {
       console.log("asking or checking is tour guide", user);
       const res = await axiosSecure.get(
-        `/request-to-admin/guides/${user.email}`
+        `/request-to-admin/guide?email=${user.email}`
       );
       // header will be returned from BE
       console.log(res.data);

@@ -34,12 +34,17 @@ const TourismAndTravelTabs = () => {
           </video>
         </TabPanel>
         <TabPanel>
-          {packages.slice(0, 3).map((item, index) => (
-            <PackagesCards
-              key={index}
-              item={item}
-            ></PackagesCards>
-          ))}
+          <div className='flex flex-col lg:flex-row gap-10 mx-auto container items-center justify-evenly'>
+            {packages.slice(0, 3).map((item, index) => (
+              <PackagesCards
+                key={index}
+                item={item}
+              ></PackagesCards>
+            ))}
+          </div>
+          <button className='text-center mx-auto flex btn bg bg-[#ffcc05]'>
+            See All Packages
+          </button>
         </TabPanel>
         <TabPanel>
           <GuideProfilePage></GuideProfilePage>

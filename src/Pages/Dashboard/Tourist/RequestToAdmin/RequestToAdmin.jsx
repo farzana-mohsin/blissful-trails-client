@@ -23,7 +23,7 @@ const RequestToAdmin = () => {
   const handleRequestToAdmin = () => {
     const request = {
       email: user?.email,
-      destination: "guide",
+      role: "guide",
       status: "pending",
     };
 

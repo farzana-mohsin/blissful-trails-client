@@ -19,7 +19,7 @@ const Navbar = () => {
         <NavLink
           to='/'
           className={({ isActive }) =>
-            isActive ? "font-bold text-[#f77d5c] " : "font-bold"
+            isActive ? "font-bold text-[#ffcc05] " : "font-bold"
           }
         >
           Home
@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className='dropdown dropdown-hover px-2'>
         <div
           tabIndex={0}
-          className='text-lg font-bold m-1'
+          className='text-lg font-bold m-1 text-[#ffcc05] '
         >
           About Blissful Trails
         </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
             <NavLink
               to='/dashboard'
               className={({ isActive }) =>
-                isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                isActive ? "font-bold text-[#ffcc05]" : "font-bold"
               }
             >
               Community
@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavLink
               to='/manage-my-posts'
               className={({ isActive }) =>
-                isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                isActive ? "font-bold text-[#ffcc05]" : "font-bold"
               }
             >
               About Us
@@ -71,7 +71,7 @@ const Navbar = () => {
             <NavLink
               to='/footer'
               className={({ isActive }) =>
-                isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                isActive ? "font-bold text-[#ffcc05]" : "font-bold"
               }
             >
               Contact Us
@@ -87,7 +87,7 @@ const Navbar = () => {
           <div className='dropdown dropdown-hover px-2'>
             <div
               tabIndex={0}
-              className='text-lg font-bold m-1'
+              className='text-lg font-bold m-1 text-[#ffcc05]'
             >
               My Profile
             </div>
@@ -99,20 +99,10 @@ const Navbar = () => {
                 <NavLink
                   to='/dashboard'
                   className={({ isActive }) =>
-                    isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                    isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
                   Dashboard
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to='/manage-my-posts'
-                  className={({ isActive }) =>
-                    isActive ? "font-bold text-[#f77d5c]" : "font-bold"
-                  }
-                >
-                  Manage My Posts
                 </NavLink>
               </li>
             </ul>
@@ -134,7 +124,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className='navbar py-6 shadow-lg mx-auto bg-[#d4f1e9] lg:px-8'>
+      <div className='navbar mx-auto bg-black lg:px-8 text white'>
         <div className='navbar-start'>
           <div className='dropdown dropdown-hover'>
             <div
@@ -165,7 +155,7 @@ const Navbar = () => {
                 <NavLink
                   to='/'
                   className={({ isActive }) =>
-                    isActive ? "font-bold text-[#f77d5c] " : "font-bold"
+                    isActive ? "font-bold text-[#ffcc05] " : "font-bold"
                   }
                 >
                   Home
@@ -175,7 +165,7 @@ const Navbar = () => {
                 <NavLink
                   to='/need-volunteers'
                   className={({ isActive }) =>
-                    isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                    isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
                   Volunteers Needed
@@ -185,7 +175,7 @@ const Navbar = () => {
                 <NavLink
                   to='/add-post'
                   className={({ isActive }) =>
-                    isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                    isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
                   Add Volunteer Post
@@ -195,7 +185,7 @@ const Navbar = () => {
                 <NavLink
                   to='/manage-my-posts'
                   className={({ isActive }) =>
-                    isActive ? "font-bold text-[#f77d5c]" : "font-bold"
+                    isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
                   Manage My Posts
@@ -205,8 +195,8 @@ const Navbar = () => {
           </div>
           <div>
             <img
-              className='w-[80%] lg:w-[50%] h-[40%]'
-              src='https://i.ibb.co/kHvrYjc/logo-default-334x134.png'
+              className='w-[40%] lg:w-[30%] h-[10%]'
+              src='https://i.ibb.co/7Vf6NBt/Screenshot-2024-06-08-at-4-19-16-PM.png'
               alt=''
             />
           </div>
@@ -223,7 +213,7 @@ const Navbar = () => {
                 className='tooltip tooltip-bottom border-none bg-none rounded-full mr-2 ml-0'
                 data-tip={user?.displayName || "user not found"}
               >
-                <button className='rounded-full bg-none border-none lg:w-12'>
+                <button className='rounded-full bg-none border-none w-12 lg:w-10'>
                   <img
                     className=' md:block rounded-full bg-none border-none'
                     alt='image not found'
@@ -240,7 +230,7 @@ const Navbar = () => {
               ></div> */}
 
               <button
-                className='btn bg-[#6faf9f] hover:bg-[#727C82] text-white px-2 py-1 lg:px-4 lg:py-2 border-2 border-[#f77d5c] text-xs lg:text-sm rounded-xl lg:mr-3'
+                className='btn bg-[#ffcc05] hover:bg-[#727C82] text-black px-2  lg:px-4 lg:py-2 border-2 border-white text-xs lg:text-sm rounded-xl lg:mr-3'
                 onClick={() => handleSignOut()}
               >
                 Sign Out
@@ -249,12 +239,12 @@ const Navbar = () => {
           ) : (
             <div className='flex flex-row'>
               <Link to='/login'>
-                <button className='btn  bg-[#6faf9f] text-white lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#727C82] border-[#f77d5c]'>
+                <button className='btn  bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#727C82] border-white'>
                   Login
                 </button>
               </Link>
               <Link to='/signup'>
-                <button className='btn  bg-[#6faf9f] text-white lg:px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#727C82] border-2 border-[#f77d5c]'>
+                <button className='btn  bg-[#ffcc05] text-black lg:px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#727C82] border-2 border-white'>
                   Register
                 </button>
               </Link>

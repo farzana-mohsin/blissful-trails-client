@@ -1,13 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaPlane, FaThList, FaUsers, FaSearch } from "react-icons/fa";
 import useAdmin from "../Hooks/UseAdmin";
+// import useGuide from "../Hooks/UseGuide";
 // import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
-  // const isTourGuide = true;
-  const isTourGuide = false;
+  const isGuide = false;
 
   const adminSections = (
     <div>
@@ -74,7 +74,7 @@ const Dashboard = () => {
           <ul className='menu'>
             {isAdmin
               ? adminSections
-              : isTourGuide
+              : isGuide
               ? guideSections
               : touristSections}
             <div className='divider'></div>

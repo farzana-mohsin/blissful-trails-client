@@ -1,6 +1,6 @@
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import { Link } from "react-router-dom";
 import useAuthHook from "../../../../Hooks/UseAuth";
 import UseWishlist from "../../../../Hooks/UseWishlist";
@@ -9,7 +9,7 @@ const Wishlist = () => {
   const { user } = useAuthHook();
   const [wishlist, refetch] = UseWishlist();
   // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = UseAxiosSecure();
 
   const handleDelete = (id) => {
     Swal.fire({

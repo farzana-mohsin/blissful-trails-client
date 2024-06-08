@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 
 import UseBookingReview from "../../../../Hooks/UseBookingReview";
 import { useEffect, useState } from "react";
@@ -27,7 +27,7 @@ const TourGuideTours = () => {
   }, [review]);
 
   // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = UseAxiosSecure();
 
   const handleReject = (id) => {
     Swal.fire({

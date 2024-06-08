@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 
 import { FaPaypal, FaTrash } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
@@ -13,7 +13,7 @@ const MyBookings = () => {
   const totalPrice = booking.reduce((total, item) => total + item.price, 0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = UseAxiosSecure();
   const { count } = useLoaderData();
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import "react-date-range/dist/theme/default.css";
 
 import { FaBook } from "react-icons/fa";
 // import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAxiosSecure from "../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import useAuthHook from "../../Hooks/UseAuth";
 import SectionTitle from "../SectionTitle/SectionTitle";
@@ -42,7 +42,7 @@ const BookingForm = ({ price, tripTitle }) => {
   };
 
   // const axiosPublic = useAxiosPublic();
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = UseAxiosSecure();
   const onSubmit = async () => {
     if (user && user?.email) {
       const booking = {

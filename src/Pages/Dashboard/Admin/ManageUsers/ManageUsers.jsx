@@ -15,7 +15,7 @@ const ManageUsers = () => {
 
   const handleMakeAdmin = (email) => {
     const makeAdmin = {
-      destination: "admin",
+      role: "admin",
       status: "complete",
     };
 
@@ -62,7 +62,7 @@ const ManageUsers = () => {
 
   const handleMakeTourGuide = (email) => {
     const makeTourGuide = {
-      destination: "guide",
+      role: "guide",
       status: "complete",
     };
 

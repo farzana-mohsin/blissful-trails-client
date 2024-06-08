@@ -1,19 +1,26 @@
-import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 
-import useAuthHook from "../../../../Hooks/UseAuth";
-
 import UseBookingReview from "../../../../Hooks/UseBookingReview";
 import { useEffect, useState } from "react";
-import UseBooking from "../../../../Hooks/UseBooking";
+
+import { useLoaderData } from "react-router-dom";
 
 const TourGuideTours = () => {
-  const { user } = useAuthHook();
   // const [isAccepted, setIsAccepted] = useState(false);
   // const [isUnderReview, setIsUnderReview] = useState(true);
   const [review, refetch] = UseBookingReview();
   const [bookings, setBookings] = useState(review);
+  const { count } = useLoaderData();
+
+  const itemsPerPage = 10;
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
+  console.log("pages", pages);
 
   useEffect(() => {
     setBookings(review);

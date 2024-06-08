@@ -1,15 +1,36 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
-import UseBooking from "../../../../Hooks/UseBooking";
+
 import { FaPaypal, FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./MyBookings.css";
+import useAuthHook from "../../../../Hooks/UseAuth";
 
 const MyBookings = () => {
-  const [booking, refetch] = UseBooking();
+  const { user } = useAuthHook();
+  const [booking, setBooking] = useState([]);
   const totalPrice = booking.reduce((total, item) => total + item.price, 0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
   const axiosSecure = useAxiosSecure();
-  // const isInReview = false;
-  // const isAccepted = true;
+  const { count } = useLoaderData();
+
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_API_URL}/bookings?email=${
+        user.email
+      }&page=${currentPage}&size=${itemsPerPage}`
+    )
+      .then((res) => res.json())
+      .then((data) => setBooking(data));
+  }, [user.email, currentPage, itemsPerPage]);
+
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+
+  const pages = [...Array(numberOfPages).keys()];
+
+  console.log("pages of bookings page", pages);
 
   const handleCancelBooking = (id) => {
     Swal.fire({
@@ -27,19 +48,36 @@ const MyBookings = () => {
         };
         axiosSecure.patch(`/bookings/${id}`, reviewStatus).then((res) => {
           if (res.data.modifiedCount > 0) {
-            refetch();
             Swal.fire({
               title: "Canceled!",
               text: "Your booking has been canceled.",
               icon: "success",
             });
+            const remaining = booking.filter((item) => item._id !== id);
+            setBooking(remaining);
           }
         });
       }
     });
   };
 
-  const handlePayment = () => {};
+  const handleItemsPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    console.log(val);
+    setItemsPerPage(val);
+    setCurrentPage(0);
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNextPage = () => {
+    if (currentPage < pages.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
     <div>
@@ -117,6 +155,28 @@ const MyBookings = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className='pagination'>
+        <button onClick={handlePreviousPage}>Previous</button>
+        {pages.map((page) => (
+          <button
+            onClick={() => setCurrentPage(page)}
+            className={currentPage === page ? "selected" : ""}
+            key={page}
+          >
+            {page}
+          </button>
+        ))}
+        <button onClick={handleNextPage}>Next</button>
+        <select
+          value={itemsPerPage}
+          onChange={handleItemsPerPage}
+          id=''
+          name=''
+        >
+          <option value='5'>5</option>
+          <option value='10'>10</option>
+        </select>
       </div>
     </div>
   );

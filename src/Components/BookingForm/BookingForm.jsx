@@ -22,6 +22,10 @@ const BookingForm = ({ price, tripTitle }) => {
   const [, refetch] = UseBooking();
   const [selectedOption, setSelectedOption] = useState(guides?.[0]?.email);
 
+  const [isFourthBooking, setIsFourthBooking] = useState(false);
+
+  useEffect(() => {}, []);
+
   useEffect(() => {
     setSelectedOption(guides?.[0]?.email);
   }, [guides]);
@@ -58,17 +62,40 @@ const BookingForm = ({ price, tripTitle }) => {
       const response = await axiosSecure.post("/bookings", booking);
       console.log(response.data); // axios provides the response inside data
       if (response.data.insertedId) {
+        fetch(
+          `${import.meta.env.VITE_API_URL}/bookings-count-test?email=${
+            user.email
+          }`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setIsFourthBooking(data.count === 4);
+
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: `${tripTitle} is added to your booking`,
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            refetch();
+
+            setTimeout(function () {
+              if (data.count === 4) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: `${tripTitle} is added to your booking`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            }, 2500);
+          });
         // show success pop up
-        reset();
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${tripTitle} is added to your booking`,
-          showConfirmButton: false,
-          timer: 2500,
-        });
-        refetch();
-        navigate("/dashboard/my-bookings");
+
+        // navigate("/dashboard/my-bookings");
       }
     } else {
       Swal.fire({
@@ -90,6 +117,7 @@ const BookingForm = ({ price, tripTitle }) => {
 
   return (
     <div>
+      <p>isFourthBooking {isFourthBooking === false ? "false" : "true"}</p>
       selectedOption: {selectedOption}
       <SectionTitle
         heading='Booking Form'

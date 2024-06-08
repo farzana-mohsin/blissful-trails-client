@@ -16,6 +16,22 @@ const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
   const { count } = useLoaderData();
 
+  const [isFourthBooking, setIsFourthBooking] = useState(false);
+
+  useEffect(() => {
+    if (isFourthBooking === true) {
+      Swal.fire({
+        title: "yes fourth booking",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+    }
+  }, [isFourthBooking]);
+
   useEffect(() => {
     fetch(
       `${import.meta.env.VITE_API_URL}/bookings?email=${
@@ -81,6 +97,10 @@ const MyBookings = () => {
 
   return (
     <div>
+      isThirdBooking {isFourthBooking ? "true" : "false"}
+      <button onClick={() => setIsFourthBooking(!isFourthBooking)}>
+        Toggle isThirdBooking
+      </button>
       <div className='flex justify-evenly'>
         <h2 className='text-4xl'>Items: {booking.length}</h2>
         <h2 className='text-4xl'>Total Price: ${totalPrice}</h2>

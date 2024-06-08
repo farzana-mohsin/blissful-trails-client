@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaPlane, FaThList, FaUsers, FaSearch } from "react-icons/fa";
+import useAdmin from "../Hooks/UseAdmin";
 // import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
 const Dashboard = () => {
-  const isAdmin = false;
+  const [isAdmin] = useAdmin();
   // const isTourGuide = true;
   const isTourGuide = false;
 

@@ -20,6 +20,7 @@ import TouristProfile from "../Pages/Dashboard/Tourist/TouristProfile/TouristPro
 import GuideProfilePage from "../Pages/GuideProfilePage/GuideProfilePage";
 import GuideProfileDetails from "../Components/GuideProfileDetails/GuideProfileDetails";
 import Payment from "../Pages/Payment/Payment";
+import AllPackages from "../Pages/AllPackages/AllPackages";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         element: <PackageDetails></PackageDetails>,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/packages/${params.id}`),
+      },
+      {
+        path: "/all-packages",
+        element: <AllPackages></AllPackages>,
       },
       {
         path: "/login",

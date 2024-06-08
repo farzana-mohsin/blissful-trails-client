@@ -5,6 +5,7 @@ import UsePackages from "../../../Hooks/UsePackages";
 import PackagesCards from "../../../Components/PackagesCards/PackagesCards";
 import videoUrl from "../../../../public/4133023-uhd_3840_2160_30fps_compressed.mp4";
 import GuideProfilePage from "../../GuideProfilePage/GuideProfilePage";
+import { Link } from "react-router-dom";
 
 const TourismAndTravelTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -42,9 +43,11 @@ const TourismAndTravelTabs = () => {
               ></PackagesCards>
             ))}
           </div>
-          <button className='text-center mx-auto flex btn bg bg-[#ffcc05]'>
-            See All Packages
-          </button>
+          <Link to='/all-packages'>
+            <button className='text-center mx-auto flex btn bg bg-[#ffcc05]'>
+              See All Packages
+            </button>
+          </Link>
         </TabPanel>
         <TabPanel>
           <GuideProfilePage></GuideProfilePage>

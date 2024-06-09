@@ -17,7 +17,7 @@ const TouristStorySection = () => {
 
   return (
     <div>
-      <section className='my-20'>
+      <section className='my-20 bg-[#ffe683] shadow-2xl'>
         <Swiper
           navigation={true}
           modules={[Navigation]}
@@ -34,12 +34,12 @@ const TouristStorySection = () => {
                   value={story.rating}
                   readOnly
                 />
-                <h3 className='text-2xl text-orange-400 my-3'>
+                <h3 className='text-3xl text-orange-800 my-3'>
                   {story.tripTitle}
                 </h3>
-                <p className='py-8'>{story.story}</p>
+                <p className='py-8 text-center text-gray-700'>{story.story}</p>
                 <Link to={`/stories/${story._id}`}>
-                  <button className='text-center mx-auto flex btn bg bg-[#ffcc05]'>
+                  <button className='text-center mx-auto flex btn text-[#ffcc05] bg-black border-2 border-white'>
                     View Story Details
                   </button>
                 </Link>

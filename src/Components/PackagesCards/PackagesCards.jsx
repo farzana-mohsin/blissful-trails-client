@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuthHook from "../../Hooks/UseAuth";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
@@ -27,13 +27,13 @@ const PackagesCards = ({ item }) => {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: `${tripTitle} added to your wishlist`,
+            title: `${tripTitle} has been added to your wishlist`,
             showConfirmButton: false,
-            timer: 2500,
+            timer: 2000,
           });
           // refetch the cart to update the cart items count
           refetch();
-          navigate("dashboard/my-wishlist");
+          navigate("/dashboard/my-wishlist");
         }
       });
       // send cart item
@@ -56,21 +56,20 @@ const PackagesCards = ({ item }) => {
   };
 
   return (
-    <div className='my-10 w-full'>
-      <div className='rounded-md shadow-md w-full text-gray-900'>
+    <div className='my-10 w-full border-2 border-[#ffcc05]'>
+      <div className='rounded-md shadow-lg w-full text-gray-900'>
         <div className='flex items-center justify-between p-3'>
-          <div className='flex flex-row items-center space-x-2'>
-            <div className='-space-y-1'>
-              <h2 className='text-sm font-semibold leading-none text-gray-900'>
+          <div className='flex flex-row items-center space-x-2 ml-3'>
+            <div>
+              <h2 className='my-3 font-semibold leading-none text-gray-900 bg-[#ffcc05] w-full p-2 rounded-md'>
                 {tripTitle}
               </h2>
-              <span className='inline-block text-sm leading-none text-gray-700'>
-                ${price}
-              </span>
+              <span className=' font-semibold  text-gray-700'>${price}</span>
             </div>
           </div>
 
           <button
+            className='text-red-600 mr-4 hover:bg-red-200 rounded-full'
             onClick={handleAddToWishlist}
             title='Open options'
             type='button'
@@ -145,12 +144,14 @@ const PackagesCards = ({ item }) => {
               </span>
             </div> */}
           </div>
-          <div className=' flex items-center justify-between mx-2'>
-            <p className='text-sm'>
-              <span className='text-base font-semibold'>{tourType}</span>
+          <div className='flex items-center justify-between mx-2 my-4'>
+            <p className=''>
+              <span className='font-lg font-semibold'>{tourType}</span>
             </p>
-            <p className='text-sm'>
-              <span className='text-base font-semibold'>View Package</span>
+            <p className='btn bg-[#ffcc05] font-bold border-white p-3'>
+              <Link to={`/packages-details/${_id}`}>
+                <button>View Package</button>
+              </Link>
             </p>
           </div>
         </div>

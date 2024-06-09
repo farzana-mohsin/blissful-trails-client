@@ -3,14 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAuthHook from "../../Hooks/UseAuth";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
+import useAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const GuideProfilePage = () => {
-  const { user } = useAuthHook();
-  const axiosSecure = UseAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { data: guides = [] } = useQuery({
     queryKey: ["guides"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/guides");
+      const res = await axiosPublic.get("/guides");
       console.log(res.data);
       return res.data;
     },
@@ -33,7 +33,7 @@ const GuideProfilePage = () => {
           {guides.map((guide, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{user?.displayName}</td>
+              <td>{guide.name}</td>
               <td>{guide.education}</td>
               <td>{guide.contact}</td>
               <td>

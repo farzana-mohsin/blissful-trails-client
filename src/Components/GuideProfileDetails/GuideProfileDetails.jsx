@@ -11,7 +11,7 @@ const GuideProfileDetails = () => {
   return (
     <div className='container mx-auto my-20 max-w-lg overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800'>
       <img
-        className='object-cover w-full h-[600px]'
+        className='object-cover lg:w-full lg:h-[600px]'
         src={photoURL}
         alt='avatar'
       ></img>
@@ -25,7 +25,7 @@ const GuideProfileDetails = () => {
         >
           <span className='ml-6'> {name}</span>
         </a>
-        <div className='space-y-3'>
+        <div className='space-y-3 ml-6'>
           <h3 className='text-sm text-gray-700 dark:text-gray-200 flex items-center gap-3'>
             <span className='text-[#ffcc05] text-xl font-bold'>
               <IoIosSchool />

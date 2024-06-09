@@ -1,0 +1,38 @@
+import { useLoaderData } from "react-router-dom";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import { Rating } from "@smastrom/react-rating";
+
+const StoryDetails = () => {
+  const loader = useLoaderData();
+  const { rating, story, tripTitle } = loader;
+
+  return (
+    <div>
+      <SectionTitle heading="Clients' Stories"></SectionTitle>
+      <div className='max-w-xl mx-auto p-6 overflow-hidden rounded-lg shadow bg-black text-gray-100'>
+        <article>
+          <h2 className='text-xl font-bold bg-[#ffcc05] p-2 w-full text-black'>
+            {tripTitle}
+          </h2>
+          <p className='mt-4 text-gray-200'>{story}</p>
+          <div className='flex items-center mt-8 space-x-4'>
+            <img
+              src='https://source.unsplash.com/100x100/?portrait'
+              alt=''
+              className='w-10 h-10 rounded-full bg-gray-500'
+            />
+            <div>
+              <Rating
+                style={{ maxWidth: 140 }}
+                value={rating}
+                readOnly
+              />
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+};
+
+export default StoryDetails;

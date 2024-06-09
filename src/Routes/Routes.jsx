@@ -21,6 +21,7 @@ import GuideProfilePage from "../Pages/GuideProfilePage/GuideProfilePage";
 import GuideProfileDetails from "../Components/GuideProfileDetails/GuideProfileDetails";
 import Payment from "../Pages/Payment/Payment";
 import AllPackages from "../Pages/AllPackages/AllPackages";
+import StoryDetails from "../Pages/StoryDetails/StoryDetails";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,12 @@ const router = createBrowserRouter([
         element: <GuideProfileDetails></GuideProfileDetails>,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/guides/${params.id}`),
+      },
+      {
+        path: "/stories/:id",
+        element: <StoryDetails></StoryDetails>,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/stories/${params.id}`),
       },
     ],
   },

@@ -5,7 +5,7 @@ const Footer = () => {
         <div className='container flex flex-col items-center justify-center lg:justify-between py-3 mx-auto space-y-8 lg:flex-row lg:space-y-0'>
           <div className='lg:w-1/3'>
             <img
-              className='w-[40%] lg:w-[30%] h-[10%]'
+              className='w-[30%] h-[10%]'
               src='https://i.ibb.co/7Vf6NBt/Screenshot-2024-06-08-at-4-19-16-PM.png'
               alt=''
             />

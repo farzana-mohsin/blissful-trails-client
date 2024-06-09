@@ -2,6 +2,8 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaPlane, FaThList, FaUsers, FaSearch } from "react-icons/fa";
 import useAdmin from "../Hooks/UseAdmin";
 import useGuide from "../Hooks/UseGuide";
+import { ImProfile } from "react-icons/im";
+import { FaHeart } from "react-icons/fa";
 // import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
@@ -14,7 +16,7 @@ const Dashboard = () => {
       <li className=''>
         <NavLink to='/dashboard/admin-profile'>
           <span className='flex'>
-            <FaHome></FaHome>
+            <ImProfile />
           </span>
           Admin Profile
         </NavLink>
@@ -36,7 +38,7 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink to='/dashboard/my-profile'>
-          <FaHome></FaHome> Tour Guide Profile
+          <ImProfile /> Tour Guide Profile
         </NavLink>
       </li>
       <li>
@@ -51,12 +53,12 @@ const Dashboard = () => {
     <div className=''>
       <li>
         <NavLink to='/dashboard/tourist-profile'>
-          <FaHome></FaHome> Tourist Profile
+          <ImProfile /> Tourist Profile
         </NavLink>
       </li>
       <li>
         <NavLink to='/dashboard/my-wishlist'>
-          <FaPlane></FaPlane> Tourist Wishlist
+          <FaHeart /> Tourist Wishlist
         </NavLink>
       </li>
       <li>
@@ -70,8 +72,8 @@ const Dashboard = () => {
   return (
     <div>
       <div className=' mx-auto flex'>
-        <div className="className='w-56 min-h-screen bg-amber-400 mr-6 p-6 list-none ">
-          <ul className='menu'>
+        <div className="className='w-56 min-h-screen bg-[#ffcc05] mr-6 pt-14 px-6 list-none">
+          <ul className='menu text-lg'>
             {isAdmin
               ? adminSections
               : isGuide
@@ -84,7 +86,7 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/packages/:tourType'>
+              <NavLink to='/all-packages'>
                 <FaSearch></FaSearch> Packages
               </NavLink>
             </li>

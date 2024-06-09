@@ -104,8 +104,7 @@ const router = createBrowserRouter([
             <MyBookings></MyBookings>
           </PrivateRoutes>
         ),
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/bookings-count`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/bookings-count`),
       },
       {
         path: "request-to-admin",

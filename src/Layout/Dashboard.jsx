@@ -4,6 +4,7 @@ import useAdmin from "../Hooks/UseAdmin";
 import useGuide from "../Hooks/UseGuide";
 import { ImProfile } from "react-icons/im";
 import { FaHeart } from "react-icons/fa";
+import { RiAdminFill } from "react-icons/ri";
 // import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 // import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 
@@ -66,13 +67,18 @@ const Dashboard = () => {
           <FaPlane></FaPlane> Tourist Bookings
         </NavLink>
       </li>
+      <li>
+        <NavLink to='/dashboard/request-to-admin'>
+          <RiAdminFill /> Request to Admin
+        </NavLink>
+      </li>
     </div>
   );
 
   return (
     <div>
       <div className=' mx-auto flex'>
-        <div className="className='w-56 min-h-screen bg-[#ffcc05] mr-6 pt-14 px-6 list-none">
+        <div className="className='w-56 h-screen bg-[#ffcc05] mr-6 pt-14 px-6 list-none">
           <ul className='menu text-lg'>
             {isAdmin
               ? adminSections

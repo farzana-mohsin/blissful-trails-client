@@ -239,7 +239,7 @@ const Navbar = () => {
           ) : (
             <div className='flex flex-row'>
               <Link to='/login'>
-                <button className='btn  bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#727C82] border-white'>
+                <button className='btn  bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#e7e9ea] border-white'>
                   Login
                 </button>
               </Link>

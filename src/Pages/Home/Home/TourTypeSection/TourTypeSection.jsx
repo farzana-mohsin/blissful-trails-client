@@ -16,7 +16,7 @@ const TourTypeSection = () => {
         subHeading='Find your next travel adventure and make it memorable. Explore wildlife, enjoy seaside or book a cruise tour. Check out our popular destinations.'
       ></SectionTitle>
 
-      <div className=' text-white p-8 flex flex-col md:flex-row items-center justify-evenly mt-5 space-y-10'>
+      <div className=' text-white p-8 flex flex-col md:flex-row items-center justify-evenly mt-5 space-y-10 md:space-y-0'>
         <Link to='/packages/seaside'>
           <div className='flex flex-col items-center space-y-5'>
             <span>

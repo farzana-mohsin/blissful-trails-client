@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-
-import { FaBook } from "react-icons/fa";
+import { IoPersonSharp } from "react-icons/io5";
+import { FaDollarSign } from "react-icons/fa6";
+import { IoAirplane } from "react-icons/io5";
+import PropTypes from "prop-types";
+import { FaCircleCheck } from "react-icons/fa6";
 // import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
@@ -17,7 +20,7 @@ import UseTourGuide from "../../Hooks/UseTourGuide";
 const BookingForm = ({ price, tripTitle }) => {
   const [guides] = UseTourGuide();
   const { user } = useAuthHook();
-  const { register, handleSubmit, reset } = useForm();
+  const { handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const [, refetch] = UseBooking();
   const [selectedOption, setSelectedOption] = useState(guides?.[0]?.email);
@@ -121,7 +124,7 @@ const BookingForm = ({ price, tripTitle }) => {
       selectedOption: {selectedOption}
       <SectionTitle
         heading='Booking Form'
-        subHeading='Confirm your booking by filling out the form!'
+        subHeading=''
       ></SectionTitle>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -137,17 +140,29 @@ const BookingForm = ({ price, tripTitle }) => {
             />
           </label> */}
 
-          <div className='flex gap-6 items-center'>
-            <h2>Tourist Name: {user?.displayName}</h2>
-            <p>Price: {price}</p>
-            <p>Name of the package: {tripTitle}</p>
+          <div className='flex flex-col'>
+            <h2 className='flex items-center gap-2'>
+              <IoPersonSharp />
+              Tourist Name: {user?.displayName}
+            </h2>
+            <p className='flex items-center gap-2'>
+              <FaDollarSign />
+              Price: ${price}
+            </p>
+            <p className='flex items-center gap-2'>
+              <IoAirplane />
+              Name of the package: {tripTitle}
+            </p>
             {/* tour guide dropdown */}
 
             <label className='form-control w-full my-6'>
               <div className='label'>
-                <span className='label-text'>Select Tour Guide</span>
+                <span className='label-text'>
+                  Select Your Tour Guide from below:
+                </span>
               </div>
               <select
+                className='bg-[#ffcc05] p-1 rounded-xl'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target?.value)}
               >
@@ -161,29 +176,6 @@ const BookingForm = ({ price, tripTitle }) => {
                 ))}
               </select>
             </label>
-
-            {/* <label className='form-control w-full my-6'>
-              <div className='label'>
-                <span className='label-text'>Category*</span>
-              </div>
-              <select
-                defaultValue='default'
-                {...register("category", { required: true })}
-                className='select select-bordered w-full'
-              >
-                <option
-                  disabled
-                  value='default'
-                >
-                  Select one category
-                </option>
-                <option value='salad'>Salad</option>
-                <option value='pizza'>Pizza</option>
-                <option value='soup'>Soup</option>
-                <option value='dessert'>Dessert</option>
-                <option value='drinks'>Drinks</option>
-              </select>
-            </label> */}
           </div>
           {/* tour date */}
           <div className='space-y-1'>
@@ -195,7 +187,7 @@ const BookingForm = ({ price, tripTitle }) => {
             </label>
             {/* Calender */}
             <DateRange
-              rangeColors={["#F43F5E"]}
+              rangeColors={["#ffcc05"]}
               editableDateInputs={true}
               onChange={(item) => handleDates(item)}
               moveRangeOnFirstSelection={false}
@@ -205,13 +197,20 @@ const BookingForm = ({ price, tripTitle }) => {
             />
           </div>
 
-          <button className='btn btn-outline'>
-            <FaBook></FaBook> Confirm Booking
-          </button>
+          <div className='flex mx-auto items-center justify-center'>
+            <button className='btn btn-outline'>
+              <FaCircleCheck /> Confirm Booking
+            </button>
+          </div>
         </form>
       </div>
     </div>
   );
+};
+
+BookingForm.propTypes = {
+  price: PropTypes.number.isRequired,
+  tripTitle: PropTypes.string.isRequired,
 };
 
 export default BookingForm;

@@ -211,7 +211,7 @@ const Navbar = () => {
           </div>
           <div>
             <img
-              className='w-[50%] lg:w-[30%] h-[25%] lg:h-[10%]'
+              className='w-[60%] lg:w-[30%] h-[35%] lg:h-[10%]'
               src='https://i.ibb.co/7Vf6NBt/Screenshot-2024-06-08-at-4-19-16-PM.png'
               alt=''
             />

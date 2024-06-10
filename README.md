@@ -1,8 +1,8 @@
 # Assignment Twelve
 
 - Assignment_category_0003
-- Github server side link: https://github.com/Porgramming-Hero-web-course/b9a11-server-side-farzana-mohsin
-- Github client side link: https://github.com/Porgramming-Hero-web-course/b9a11-client-side-farzana-mohsin
+- Github server side link: https://github.com/programming-hero-web-course1/b9a12-server-side-farzana-mohsin
+- Github client side link: https://github.com/programming-hero-web-course1/b9a12-client-side-farzana-mohsin
 - live site link: https://assignment-eleven-a257a.web.app/
 - admin email: elisa@gmail.com
 - admin password: Abcd1234!
@@ -23,6 +23,7 @@
   - The register and login have multiple credentials which are shown by toasts.
   - User can also login via their Google or Github accounts.
 
+- The website logo is created through Canva.
 - The navbar is responsive and will show the buttons for private routes if a user is logged in
 
   - A hover dropdown is used under My Profile which navigates to the Dashboard.

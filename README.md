@@ -58,6 +58,7 @@
   - React date range is used to show the calendar.
 
 - An `Error page` is added with a button to go to homepage incase a user tries to go to a route that doesn't exist
+- On the Navbar there is a About Blissful Trail dropdown - Community, About Us and Contact Us. Framer Motion is used on About Us page.
 
 - Integration with other tools
 

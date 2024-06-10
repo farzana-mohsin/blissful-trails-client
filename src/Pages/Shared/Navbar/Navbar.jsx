@@ -71,7 +71,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to='/footer'
+              to='/contact-us'
               className={({ isActive }) =>
                 isActive
                   ? "font-bold text-amber-600"
@@ -199,7 +199,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to='/manage-my-posts'
+                  to='/contact-us'
                   className={({ isActive }) =>
                     isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }

@@ -1,8 +1,12 @@
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet";
 
 const Community = () => {
   return (
     <div className='min-h-[calc(100vh-330px)]'>
+      <Helmet>
+        <title>Blissful Trail | Community</title>
+      </Helmet>
       <h2 className='text-3xl md:text-5xl font-bold text-center my-10'>
         <SectionTitle heading='Our Community'></SectionTitle>
       </h2>

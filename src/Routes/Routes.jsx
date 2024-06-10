@@ -23,6 +23,7 @@ import Payment from "../Pages/Payment/Payment";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import StoryDetails from "../Pages/StoryDetails/StoryDetails";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },

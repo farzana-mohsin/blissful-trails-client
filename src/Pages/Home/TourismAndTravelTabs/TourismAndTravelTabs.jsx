@@ -43,8 +43,8 @@ const TourismAndTravelTabs = () => {
             width='1600'
             height='640'
             controls='controls'
-            // muted
-            // autoPlay
+            muted
+            autoPlay
           >
             {/* <source type='video/mp4' /> */}
           </video>

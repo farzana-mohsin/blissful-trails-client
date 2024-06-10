@@ -16,24 +16,32 @@ const MyBookings = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const axiosSecure = UseAxiosSecure();
   const { count } = useLoaderData();
+  const token = localStorage.getItem("token");
 
-  // useEffect(() => {
-  // fetch(
-  //   `${import.meta.env.VITE_API_URL}/bookings?email=${
-  //     user.email
-  //   }&page=${currentPage}&size=${itemsPerPage}`
-  // )
-  //   .then((res) => res.json())
-
-  const { data: booking = [], refetch } = useQuery({
-    queryKey: ["bookings"],
-    queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/bookings/?email=${user.email}&page=${currentPage}&size=${itemsPerPage}`
-      );
-      return res.data;
-    },
+  useEffect(() => {
+    let headers = { "Content-Type": "application/json" };
+    if (token) {
+      headers["Authorization"] = `Token ${token}`;
+    }
+    return fetch(
+      `${import.meta.env.VITE_API_URL}/bookings?email=${
+        user.email
+      }&page=${currentPage}&size=${itemsPerPage}`,
+      { headers }
+    )
+      .then((res) => res.json())
+      .then((data) => setItemsPerPage(data));
   });
+
+  // const { data: booking = [], refetch } = useQuery({
+  //   queryKey: ["bookings"],
+  //   queryFn: async () => {
+  //     const res = await axiosSecure.get(
+  //       `/bookings/?email=${user.email}&page=${currentPage}&size=${itemsPerPage}`
+  //     );
+  //     return res.data;
+  //   },
+  // });
   // axiosSecure
   //   .get(
   //     `/bookings/?email=${user.email}&page=${currentPage}&size=${itemsPerPage}`

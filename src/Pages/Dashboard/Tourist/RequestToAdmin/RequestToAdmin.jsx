@@ -55,7 +55,7 @@ const RequestToAdmin = () => {
       ) : (
         <button
           onClick={handleRequestToAdmin}
-          className='btn flex mx-auto bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#e7e9ea] border-white'
+          className='btn flex mx-auto bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#b86f3b] border-white'
         >
           Request to be a tour guide
         </button>

@@ -182,7 +182,7 @@ const SignUp = () => {
               </div> */}
           <div className='form-control mt-6'>
             <input
-              className='w-full px-3 py-2 border-2 font-bold rounded-md border-orange-400 bg-gray-100 text-gray-900 focus:border-amber-800 hover:bg-[#ffcc05]'
+              className='w-full px-3 py-2 border-2 font-bold rounded-md border-orange-400 bg-gray-100 text-gray-900 focus:border-amber-800 hover:bg-[#b86f3b]'
               type='submit'
               value='Sign up'
             />

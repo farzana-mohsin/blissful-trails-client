@@ -11,12 +11,12 @@ import { FaCircleCheck } from "react-icons/fa6";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import useAuthHook from "../../Hooks/UseAuth";
-import SectionTitle from "../SectionTitle/SectionTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UseBooking from "../../Hooks/UseBooking";
 import UseTourGuide from "../../Hooks/UseTourGuide";
 import Confetti from "react-confetti";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const BookingForm = ({ price, tripTitle }) => {
   const [guides] = UseTourGuide();
@@ -120,7 +120,8 @@ const BookingForm = ({ price, tripTitle }) => {
   };
 
   return (
-    <div>
+    <div className='mx-auto container'>
+      <SectionTitle heading='Booking Form'></SectionTitle>
       <p>
         {isFourthBooking === false ? (
           ""
@@ -148,29 +149,35 @@ const BookingForm = ({ price, tripTitle }) => {
             />
           </label> */}
 
-          <div className='flex flex-col'>
+          <div className='flex flex-col mx-14 md:mx-auto'>
             <h2 className='flex items-center gap-2'>
-              <IoPersonSharp />
+              <span className='text-yellow-500'>
+                <IoPersonSharp />
+              </span>
               Tourist Name: {user?.displayName}
             </h2>
             <p className='flex items-center gap-2'>
-              <FaDollarSign />
+              <span className='text-yellow-500'>
+                <FaDollarSign />
+              </span>
               Price: ${price}
             </p>
             <p className='flex items-center gap-2'>
-              <IoAirplane />
-              Name of the package: {tripTitle}
+              <span className='text-yellow-500'>
+                <IoAirplane />
+              </span>
+              Package Name: {tripTitle}
             </p>
             {/* tour guide dropdown */}
 
-            <label className='form-control w-full my-6'>
+            <label className='form-control w-full my-3'>
               <div className='label'>
                 <span className='label-text'>
                   Select Your Tour Guide from below:
                 </span>
               </div>
               <select
-                className='bg-[#ffcc05] p-1 rounded-xl'
+                className='bg-[#ffcc05] p-1'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target?.value)}
               >
@@ -186,10 +193,10 @@ const BookingForm = ({ price, tripTitle }) => {
             </label>
           </div>
           {/* tour date */}
-          <div className='space-y-1'>
+          <div className='space-y-1 mx-14 md:mx-auto'>
             <label
               htmlFor='location'
-              className='block text-gray-600'
+              className='text-gray-600 block'
             >
               Select Availability Range
             </label>
@@ -206,7 +213,7 @@ const BookingForm = ({ price, tripTitle }) => {
           </div>
 
           <div className='flex mx-auto items-center justify-center'>
-            <button className='btn btn-outline'>
+            <button className='btn bg-[#ffcc05] hover:bg-[#b86f3b] text-black px-2  lg:px-4 lg:py-2 border-2 border-white text-xs lg:text-sm rounded-xl lg:mr-3'>
               <FaCircleCheck /> Confirm Booking
             </button>
           </div>

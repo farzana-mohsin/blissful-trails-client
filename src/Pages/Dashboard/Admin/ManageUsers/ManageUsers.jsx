@@ -6,12 +6,19 @@ import Swal from "sweetalert2";
 const ManageUsers = () => {
   const axiosSecure = UseAxiosSecure();
   const [pendingRequests, setPendingRequests] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/pending-requests`)
+    let headers = { "Content-Type": "application/json" };
+    if (token) {
+      headers["Authorization"] = `Token ${token}`;
+    }
+    return fetch(`${import.meta.env.VITE_API_URL}/pending-requests`, {
+      headers,
+    })
       .then((res) => res.json())
       .then((data) => setPendingRequests(data));
-  }, []);
+  }, [token]);
 
   const handleMakeAdmin = (email) => {
     const makeAdmin = {
@@ -88,7 +95,9 @@ const ManageUsers = () => {
 
   return (
     <div>
-      <h2>manage users</h2>
+      <h2 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2'>
+        manage users
+      </h2>
       {pendingRequests?.map((request, index) => (
         <div key={index}>
           {request?.status === "pending" ? (

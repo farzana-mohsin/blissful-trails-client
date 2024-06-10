@@ -6,27 +6,28 @@ import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const PackageDetails = () => {
   const item = useLoaderData();
-  const { images, tripTitle, price, aboutTheTour, tourPlan } = item;
+  const { images, tripTitle, price, tourPlan } = item;
 
   return (
     <div>
-      <SectionTitle
-        heading={tripTitle}
-        subHeading={aboutTheTour}
-      ></SectionTitle>
-      <div className='mx-auto flex flex-col lg:flex-row justify-center'>
-        <section className='py-6'>
+      <div></div>
+      <div className='mx-auto justify-center flex flex-col lg:flex-row'>
+        <div className='py-3'>
+          <SectionTitle heading={tripTitle}></SectionTitle>
           <div className='grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2'>
             {images.map((image, index) => (
               <img
-                className='w-full h-full'
+                className='w-full h-full shadow-xl'
                 key={index}
                 src={image}
               ></img>
             ))}
           </div>
 
-          <div className='my-8'>
+          <div className='my-10 py-10'>
+            <h2 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2 w-1/3 mx-auto'>
+              Tour Plan
+            </h2>
             <ul className='steps steps-vertical'>
               {tourPlan?.map((tour, index) => (
                 <li
@@ -38,8 +39,8 @@ const PackageDetails = () => {
               ))}
             </ul>
           </div>
-        </section>
-        <div className='flex-grow'>
+        </div>
+        <div>
           <BookingForm
             price={price}
             tripTitle={tripTitle}

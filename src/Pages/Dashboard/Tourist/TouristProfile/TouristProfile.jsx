@@ -115,7 +115,7 @@ const TouristProfile = () => {
                 type='text'
                 placeholder='Trip Title'
                 {...register("tripTitle", { required: true })}
-                className='input input-bordered w-full'
+                className='input input-bordered w-full py-2 textarea textarea-warning text-gray-700 placeholder-gray-500 bg-white outline-none dark:bg-gray-800 dark:placeholder-gray-400 focus:placeholder-transparent dark:focus:placeholder-transparent'
               />
             </label>
 

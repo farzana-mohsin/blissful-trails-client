@@ -82,7 +82,7 @@ const Wishlist = () => {
                 <td>${item.price}</td>
                 <td>
                   <Link to={`/packages-details/${item.packageId}`}>
-                    <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#e7e9ea] border-white'>
+                    <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#b86f3b] border-white'>
                       Package Details
                     </button>
                   </Link>

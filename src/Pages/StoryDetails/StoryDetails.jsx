@@ -1,10 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import { Rating } from "@smastrom/react-rating";
+import { FacebookShareButton } from "react-share";
+import { FacebookIcon } from "react-share";
 
 const StoryDetails = () => {
   const loader = useLoaderData();
   const { rating, story, tripTitle } = loader;
+  const currentPageUrl = window.location.href;
 
   return (
     <div className='min-h-[calc(100vh-320px)]'>
@@ -15,18 +18,21 @@ const StoryDetails = () => {
             {tripTitle}
           </h2>
           <p className='mt-4 text-gray-200'>{story}</p>
-          <div className='flex items-center mt-8 space-x-4'>
-            {/* <img
-              src='https://source.unsplash.com/100x100/?portrait'
-              alt=''
-              className='w-10 h-10 rounded-full bg-gray-500'
-            /> */}
+          <div className='flex items-center mt-8 space-x-4 justify-between'>
             <div>
               <Rating
                 style={{ maxWidth: 140 }}
                 value={rating}
                 readOnly
               />
+            </div>
+            <div>
+              <FacebookShareButton url={currentPageUrl}>
+                <FacebookIcon
+                  size={36}
+                  round={true}
+                />
+              </FacebookShareButton>
             </div>
           </div>
         </article>

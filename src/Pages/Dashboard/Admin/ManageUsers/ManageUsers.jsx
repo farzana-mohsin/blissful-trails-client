@@ -6,13 +6,17 @@ import Swal from "sweetalert2";
 const ManageUsers = () => {
   const axiosSecure = UseAxiosSecure();
   const [pendingRequests, setPendingRequests] = useState([]);
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/pending-requests`)
-      .then((res) => res.json())
-      .then((data) => setPendingRequests(data));
-  }, [token]);
+    async function fetchData() {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/pending-requests`
+      );
+      const data = await res.json();
+      setPendingRequests(data);
+    }
+    fetchData();
+  }, []);
 
   const handleMakeAdmin = (email) => {
     const makeAdmin = {
@@ -20,24 +24,24 @@ const ManageUsers = () => {
       status: "complete",
     };
 
-    //   axiosSecure
-    //     .patch(`pending-requests?email=${email}`, makeAdmin)
-    //     .then((res) => {
-    //       if (res.data.modifiedCount > 0) {
-    //         Swal.fire({
-    //           position: "center",
-    //           icon: "success",
-    //           title: `The status has been updated to Admin`,
-    //           showConfirmButton: false,
-    //           timer: 2500,
-    //         });
+    axiosSecure
+      .patch(`pending-requests?email=${email}`, makeAdmin)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `The status has been updated to Admin`,
+            showConfirmButton: false,
+            timer: 2500,
+          });
 
-    //         const remainingPendingRequests = pendingRequests.filter(
-    //           (request) => request.email !== email
-    //         );
-    //         setPendingRequests(remainingPendingRequests);
-    //       }
-    //     });
+          const remainingPendingRequests = pendingRequests.filter(
+            (request) => request.email !== email
+          );
+          setPendingRequests(remainingPendingRequests);
+        }
+      });
   };
 
   // tanstack
@@ -90,32 +94,58 @@ const ManageUsers = () => {
   return (
     <div>
       <h2 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2'>
-        manage users
+        Manage Users
       </h2>
-      {pendingRequests?.map((request, index) => (
-        <div key={index}>
-          {request?.status === "pending" ? (
-            <>
-              <h3>{request?.email}</h3>
-              <h1>{request?.status}</h1>
-              <button
-                className='mr-3 btn btn-outline'
-                onClick={() => handleMakeAdmin(request?.email)}
-              >
-                Make Admin
-              </button>
-              <button
-                className=' btn btn-outline'
-                onClick={() => handleMakeTourGuide(request?.email)}
-              >
-                Make Tour Guide
-              </button>
-            </>
-          ) : (
-            ""
-          )}
-        </div>
-      ))}
+      <div className='overflow-x-auto'>
+        <table className='table w-full'>
+          {/* head */}
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Requester&apos;s Email</th>
+              <th>Status</th>
+              <th>Action</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pendingRequests.map((request, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{request?.email}</td>
+                <td>{request.status}</td>
+                {/* 
+              <td>
+                {request.status === "review" ? (
+                  <p>Under Review</p>
+                ) : request.status === "accepted" ? (
+                  <p>Accepted</p>
+                ) : (
+                  <p>Rejected</p>
+                )}
+              </td> */}
+
+                <td>
+                  <button
+                    className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#b86f3b] border-2 border-white'
+                    onClick={() => handleMakeAdmin(request?.email)}
+                  >
+                    Make Admin
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className='btn bg-[#ffcc05] text-black px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#b86f3b] border-2 border-white'
+                    onClick={() => handleMakeTourGuide(request?.email)}
+                  >
+                    Make Tour Guide
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

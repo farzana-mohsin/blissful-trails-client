@@ -35,33 +35,37 @@
 
 - On the Navbar, there is About Blissful Trails dropdown which showcases three sections - Community, About Us, and Contact Us
 - My Profile dropdown will take a logged in user to the dashboard depending on their roles.
+- All the users will be by default tourist.
+- Once the user goes to the dashboard, they can see
+  - Tourist profile - user's name and photo will be displayed in this section
+  - Tourist wishlist - Tourists are able to add a package to their wishlist, The wishlist packages will be displayed in this section in tabular format
+  - Tourist bookings - tourists are able to see their bookings in this section. They can also cancel their booking until it's rejected or accepted by the tour guide. Once accepted, pay button will be enabled and tourist can pay for the booking.
+  - Tourist can also request to admin to become a tour guide.
+- Admin dashboard
+  - Admin's profile - Admin's name and photo will be visible in this section
+    add packages - admin can add new tour packages
+    manage users - with manage users admin can assign a tour guide or admin role to the requester (tourist). the data is shown in tabular format
+- Tour Guide Dashboard
 
-  -
+  - tour guide profile - tour guide's name and photo will be visible in this section
+  - the tours assigned to the tour guide - Tour guides will have the option to accept or reject the tours.
 
-  - Tourists can book a package by clicking on View Package button.
+- Once the tourist/user clicks on a tour, they can see all the details (price, tour type, about the tour, tour plan)
 
-- The volunteer posts are sorted by date, with the oncoming deadline ones appearing first.
-- Private Routes - The application has multiple private routes, which are visible only if the users are logged in.
-- The `Add Volunteer Post` page has the ability to add new volunteer post once the user is logged in.
+  - User can book a tour. Users will also have the option to choose their tour guide.
+  - React date range is used to show the calendar.
+
 - An `Error page` is added with a button to go to homepage incase a user tries to go to a route that doesn't exist
 
 - Under `Manage My Posts` private route - a tab format is used for these two section. - `My Volunteer Posts` & `My Volunteer Requests`.
 
-  - Users are able to see their added posts and their requested volunteer posts under Manage My Posts.
-  - If there are not posts added or requests submitted, users will see buttons to add a post, see all volunteer positions, or directly go to homepage.
-  - Users have the ability to update and delete their volunteer posts from My Volunteer Posts. Users can also cancel their request to be a volunteer from My Volunteer Requests section.
-
-- Once clicking on `View Details` from a volunteer post, the user needs to log in and once logged in, the user can see all the details of that post. The user can also apply for the volunteer post by clicking on `Be a Volunteer`
-
-  - `Be a Volunteer` button is only visible to the volunteers and not the organizers. This button is also invisible if the post doesn't need any more volunteers.
-
 - Integration with other tools
 
-  - The application has been integrated with popular productivity tools, such as Framer Motion, Slider, React Helmet, React Tabs, React Datepicker, Animate.css
+  - The application has been integrated with popular productivity tools, such as Framer Motion, Slider, React Helmet, React Tabs, React date range, Animate.css
   - React toastify were used to show the success and error messages
   - Images were hosted on imgbb.
 
 - Mobile and tablet friendly: The web application is responsive and optimized for mobile devices, allowing users to manage tasks on the go.
 - Firebase config keys have been transferred to .env.local file.
 - MongoDB username and password have been transferred to .env file with encrypted code.
-- JWT is used to protect the backend data of private routes. Middlewares were used to verify the token and email addresses. `clearCookie` is used to remove the token once the user logs out.
+- JWT is used to protect the backend data of private routes. Middlewares were used to verify the token and email addresses. `localStorage` is used to remove the token once the user logs out.

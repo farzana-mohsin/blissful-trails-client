@@ -151,7 +151,7 @@ const PackagesCards = ({ item }) => {
             <p className=''>
               <span className='font-lg font-semibold'>{tourType}</span>
             </p>
-            <p className='btn bg-[#ffcc05] font-bold border-white p-3'>
+            <p className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#b86f3b] border-2 border-white'>
               <Link to={`/packages-details/${_id}`}>
                 <button>View Package</button>
               </Link>

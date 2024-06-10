@@ -55,7 +55,7 @@
 
 - Once the tourist/user clicks on a tour, they can see all the details (price, tour type, about the tour, tour plan)
 
-  - User can book a tour. Users will also have the option to choose their tour guide.
+  - User can book a tour. Users will also have the option to choose their tour guide. If a user books more than three times, they're eligible to get a discount. React confetti is used to show the discount.
   - React date range is used to show the calendar.
 
 - An `Error page` is added with a button to go to homepage incase a user tries to go to a route that doesn't exist

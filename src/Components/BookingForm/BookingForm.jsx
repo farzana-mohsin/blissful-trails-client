@@ -84,6 +84,7 @@ const BookingForm = ({ price, tripTitle }) => {
             });
             reset();
             refetch();
+            navigate("/dashboard/my-bookings");
 
             setTimeout(function () {
               if (data.count === 4) {
@@ -98,8 +99,6 @@ const BookingForm = ({ price, tripTitle }) => {
             }, 2500);
           });
         // show success pop up
-
-        // navigate("/dashboard/my-bookings");
       }
     } else {
       Swal.fire({
@@ -128,8 +127,8 @@ const BookingForm = ({ price, tripTitle }) => {
         ) : (
           <Confetti
             drawShape={2}
-            width={1200}
-            height={1200}
+            width={1600}
+            height={1600}
           />
         )}
       </p>

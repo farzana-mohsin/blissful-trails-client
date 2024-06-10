@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UseBooking from "../../Hooks/UseBooking";
 import UseTourGuide from "../../Hooks/UseTourGuide";
+import Confetti from "react-confetti";
 
 const BookingForm = ({ price, tripTitle }) => {
   const [guides] = UseTourGuide();
@@ -24,7 +25,7 @@ const BookingForm = ({ price, tripTitle }) => {
   const navigate = useNavigate();
   const [, refetch] = UseBooking();
   const [selectedOption, setSelectedOption] = useState(guides?.[0]?.email);
-
+  const [clicked, setClicked] = useState(true);
   const [isFourthBooking, setIsFourthBooking] = useState(false);
 
   useEffect(() => {}, []);
@@ -64,6 +65,7 @@ const BookingForm = ({ price, tripTitle }) => {
       //
       const response = await axiosSecure.post("/bookings", booking);
       console.log(response.data); // axios provides the response inside data
+
       if (response.data.insertedId) {
         fetch(
           `${import.meta.env.VITE_API_URL}/bookings-count-test?email=${
@@ -73,15 +75,14 @@ const BookingForm = ({ price, tripTitle }) => {
           .then((res) => res.json())
           .then((data) => {
             setIsFourthBooking(data.count === 4);
-
-            reset();
             Swal.fire({
               position: "center",
               icon: "success",
               title: `${tripTitle} is added to your booking`,
               showConfirmButton: false,
-              timer: 2500,
+              timer: 1500,
             });
+            reset();
             refetch();
 
             setTimeout(function () {
@@ -89,9 +90,9 @@ const BookingForm = ({ price, tripTitle }) => {
                 Swal.fire({
                   position: "center",
                   icon: "success",
-                  title: `${tripTitle} is added to your booking`,
+                  title: `You're eligible to get $200 discount!`,
                   showConfirmButton: false,
-                  timer: 1500,
+                  timer: 2500,
                 });
               }
             }, 2500);
@@ -120,12 +121,19 @@ const BookingForm = ({ price, tripTitle }) => {
 
   return (
     <div>
-      <p>isFourthBooking {isFourthBooking === false ? "false" : "true"}</p>
-      selectedOption: {selectedOption}
-      <SectionTitle
-        heading='Booking Form'
-        subHeading=''
-      ></SectionTitle>
+      <p>
+        {isFourthBooking === false ? (
+          ""
+        ) : (
+          <Confetti
+            drawShape={2}
+            width={1200}
+            height={1200}
+          />
+        )}
+      </p>
+      {/* selectedOption: {selectedOption} */}
+
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* <label className='form-control w-full my-6'>

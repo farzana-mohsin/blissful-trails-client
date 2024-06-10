@@ -3,7 +3,7 @@
 - Assignment_category_0003
 - Github server side link: https://github.com/programming-hero-web-course1/b9a12-server-side-farzana-mohsin
 - Github client side link: https://github.com/programming-hero-web-course1/b9a12-client-side-farzana-mohsin
-- live site link: https://assignment-eleven-a257a.web.app/
+- live site link: https://blissful-trails.web.app/
 - admin email: elisa@gmail.com
 - admin password: Abcd1234!
 

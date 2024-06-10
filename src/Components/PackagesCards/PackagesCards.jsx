@@ -19,6 +19,7 @@ const PackagesCards = ({ item }) => {
       const wishlistItem = {
         packageId: _id,
         email: user.email,
+        tourType,
         tripTitle,
         price,
       };
@@ -56,7 +57,7 @@ const PackagesCards = ({ item }) => {
   };
 
   return (
-    <div className='my-10 w-1/3 mx-auto border-2 border-[#ffcc05]'>
+    <div className='my-10 w-full mx-auto border-2 border-[#ffcc05]'>
       <div className='rounded-md shadow-lg w-full text-gray-900'>
         <div className='flex items-center justify-between p-3'>
           <div className='flex flex-row items-center space-x-2 ml-3'>
@@ -64,7 +65,9 @@ const PackagesCards = ({ item }) => {
               <h2 className='my-3 font-semibold leading-none text-gray-900 bg-[#ffcc05] w-full p-2 rounded-md'>
                 {tripTitle}
               </h2>
-              <span className=' font-semibold  text-gray-700'>${price}</span>
+              <span className=' font-semibold text-gray-700 coffee:text-gray-200 '>
+                ${price}
+              </span>
             </div>
           </div>
 

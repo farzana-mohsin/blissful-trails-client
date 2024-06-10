@@ -142,6 +142,7 @@ const router = createBrowserRouter([
             <TourGuideTours></TourGuideTours>
           </PrivateRoutes>
         ),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/bookings-count`),
       },
 
       // admin routes

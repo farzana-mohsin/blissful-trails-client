@@ -81,9 +81,10 @@ const MyBookings = () => {
 
   return (
     <div>
-      <div className='flex justify-evenly'>
-        <h2 className='text-4xl'>Items: {booking.length}</h2>
-        <h2 className='text-4xl'>Total Price: ${totalPrice}</h2>
+      <div className=''>
+        <h2 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2'>
+          My Bookings
+        </h2>
         {/* {wishlist.length ? (
           <>
             <Link to='/dashboard/payment'>
@@ -102,7 +103,6 @@ const MyBookings = () => {
         )} */}
       </div>
       <div className='overflow-x-auto'>
-        <h1>My Bookings</h1>
         <table className='table w-full'>
           {/* head */}
           <thead>

@@ -5,6 +5,7 @@ import UseBookingReview from "../../../../Hooks/UseBookingReview";
 import { useEffect, useState } from "react";
 
 import { useLoaderData } from "react-router-dom";
+import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 
 const TourGuideTours = () => {
   // const [isAccepted, setIsAccepted] = useState(false);
@@ -82,7 +83,7 @@ const TourGuideTours = () => {
   return (
     <div>
       <div className='flex justify-evenly'>
-        <h2 className='text-4xl'>Items: {bookings.length}</h2>
+        {/* <h2 className='text-4xl'>Items: {bookings.length}</h2> */}
         {/* <h2 className='text-4xl'>Total Price: {totalPrice}</h2> */}
         {/* {wishlist.length ? (
           <>
@@ -102,7 +103,9 @@ const TourGuideTours = () => {
         )} */}
       </div>
       <div className='overflow-x-auto'>
-        <h1>My Bookings to Review</h1>
+        <h2 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2'>
+          My Bookings To Review
+        </h2>
         <table className='table w-full'>
           {/* head */}
           <thead>

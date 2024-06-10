@@ -39,7 +39,6 @@ const Wishlist = () => {
   return (
     <div>
       <div className='flex justify-evenly'>
-        <h2 className='text-4xl'>Items: {wishlist.length}</h2>
         {/* <h2 className='text-4xl'>Total Price: {totalPrice}</h2> */}
         {/* {wishlist.length ? (
           <>
@@ -59,13 +58,16 @@ const Wishlist = () => {
         )} */}
       </div>
       <div className='overflow-x-auto'>
-        <h1>Wishlist page</h1>
+        <h1 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2'>
+          My Wishlist
+        </h1>
         <table className='table w-full'>
           {/* head */}
           <thead>
             <tr>
               <th>#</th>
               <th>Trip Title</th>
+              <th>Tour Type</th>
               <th>Price</th>
               <th>Details</th>
               <th>Action</th>
@@ -80,7 +82,9 @@ const Wishlist = () => {
                 <td>${item.price}</td>
                 <td>
                   <Link to={`/packages-details/${item.packageId}`}>
-                    <button>Package Details</button>
+                    <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#e7e9ea] border-white'>
+                      Package Details
+                    </button>
                   </Link>
                 </td>
                 <td>

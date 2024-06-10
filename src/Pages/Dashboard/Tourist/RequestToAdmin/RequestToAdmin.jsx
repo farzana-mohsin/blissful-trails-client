@@ -43,15 +43,21 @@ const RequestToAdmin = () => {
 
   return (
     <div>
-      <h2>want to be a Tour Guide?</h2>
+      <h2 className='text-3xl'>
+        <span>Hi </span>
+        {user?.displayName ? user?.displayName : "there,"}
+      </h2>
+      <h2 className='my-5 text-2xl'>
+        Want to be a Tour Guide? Click the button below!
+      </h2>
       {isRequestPending ? (
         "You have already requested to be a tour guide"
       ) : (
         <button
           onClick={handleRequestToAdmin}
-          className='btn btn-outline'
+          className='btn flex mx-auto bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#e7e9ea] border-white'
         >
-          Request to be tour guide
+          Request to be a tour guide
         </button>
       )}
     </div>

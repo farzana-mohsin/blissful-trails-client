@@ -130,7 +130,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role='button'
-              className='btn btn-ghost lg:hidden'
+              className='btn btn-ghost text-[#ffcc05] lg:hidden'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -161,6 +161,16 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
+              <li className=''>
+                <NavLink
+                  to='/dashboard'
+                  className={({ isActive }) =>
+                    isActive ? "font-bold text-[#ffcc05] " : "font-bold"
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </li>
               <li className=' lg:mr-0'>
                 <NavLink
                   to='/need-volunteers'
@@ -168,7 +178,7 @@ const Navbar = () => {
                     isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
-                  Volunteers Needed
+                  Community
                 </NavLink>
               </li>
               <li>
@@ -178,7 +188,7 @@ const Navbar = () => {
                     isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
-                  Add Volunteer Post
+                  About Us
                 </NavLink>
               </li>
               <li>
@@ -188,7 +198,7 @@ const Navbar = () => {
                     isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
                 >
-                  Manage My Posts
+                  Contact Us
                 </NavLink>
               </li>
             </ul>
@@ -252,7 +262,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <label className='cursor-pointer grid place-items-center ml-2 lg:ml-6'>
+        {/* <label className='cursor-pointer grid place-items-center ml-2 lg:ml-6'>
           <input
             onChange={handleToggle}
             type='checkbox'
@@ -292,7 +302,7 @@ const Navbar = () => {
           >
             <path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'></path>
           </svg>
-        </label>
+        </label> */}
       </div>
     </div>
   );

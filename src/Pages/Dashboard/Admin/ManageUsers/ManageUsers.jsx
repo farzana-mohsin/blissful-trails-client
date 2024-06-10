@@ -9,13 +9,7 @@ const ManageUsers = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    let headers = { "Content-Type": "application/json" };
-    if (token) {
-      headers["Authorization"] = `Token ${token}`;
-    }
-    return fetch(`${import.meta.env.VITE_API_URL}/pending-requests`, {
-      headers,
-    })
+    fetch(`${import.meta.env.VITE_API_URL}/pending-requests`)
       .then((res) => res.json())
       .then((data) => setPendingRequests(data));
   }, [token]);
@@ -26,24 +20,24 @@ const ManageUsers = () => {
       status: "complete",
     };
 
-    axiosSecure
-      .patch(`pending-requests?email=${email}`, makeAdmin)
-      .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `The status has been updated to Admin`,
-            showConfirmButton: false,
-            timer: 2500,
-          });
+    //   axiosSecure
+    //     .patch(`pending-requests?email=${email}`, makeAdmin)
+    //     .then((res) => {
+    //       if (res.data.modifiedCount > 0) {
+    //         Swal.fire({
+    //           position: "center",
+    //           icon: "success",
+    //           title: `The status has been updated to Admin`,
+    //           showConfirmButton: false,
+    //           timer: 2500,
+    //         });
 
-          const remainingPendingRequests = pendingRequests.filter(
-            (request) => request.email !== email
-          );
-          setPendingRequests(remainingPendingRequests);
-        }
-      });
+    //         const remainingPendingRequests = pendingRequests.filter(
+    //           (request) => request.email !== email
+    //         );
+    //         setPendingRequests(remainingPendingRequests);
+    //       }
+    //     });
   };
 
   // tanstack

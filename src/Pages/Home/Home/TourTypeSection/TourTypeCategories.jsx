@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { IoIosAirplane } from "react-icons/io";
+import { useLoaderData } from "react-router-dom";
+
 import PackagesCards from "../../../../Components/PackagesCards/PackagesCards";
 
 const TourTypeCategories = () => {

@@ -6,47 +6,26 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./MyBookings.css";
 import useAuthHook from "../../../../Hooks/UseAuth";
-import { useQuery } from "@tanstack/react-query";
 
 const MyBookings = () => {
   const { user } = useAuthHook();
-  // const [booking, setBooking] = useState([]);
-  // const totalPrice = booking.reduce((total, item) => total + item.price, 0);
+  const [booking, setBooking] = useState([]);
+  const totalPrice = booking.reduce((total, item) => total + item.price, 0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
   const axiosSecure = UseAxiosSecure();
   const { count } = useLoaderData();
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    let headers = { "Content-Type": "application/json" };
-    if (token) {
-      headers["Authorization"] = `Token ${token}`;
-    }
-    return fetch(
+    fetch(
       `${import.meta.env.VITE_API_URL}/bookings?email=${
         user.email
-      }&page=${currentPage}&size=${itemsPerPage}`,
-      { headers }
+      }&page=${currentPage}&size=${itemsPerPage}`
     )
       .then((res) => res.json())
-      .then((data) => setItemsPerPage(data));
-  });
+      .then((data) => setBooking(data));
+  }, [user.email, currentPage, itemsPerPage]);
 
-  // const { data: booking = [], refetch } = useQuery({
-  //   queryKey: ["bookings"],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get(
-  //       `/bookings/?email=${user.email}&page=${currentPage}&size=${itemsPerPage}`
-  //     );
-  //     return res.data;
-  //   },
-  // });
-  // axiosSecure
-  //   .get(
-  //     `/bookings/?email=${user.email}&page=${currentPage}&size=${itemsPerPage}`
-  //   )
-  //   .then((res) => setBooking(res.data));
   const numberOfPages = Math.ceil(count / itemsPerPage);
 
   const pages = [...Array(numberOfPages).keys()];
@@ -76,9 +55,8 @@ const MyBookings = () => {
             });
           }
         });
-        // const remaining = booking.filter((item) => item._id !== id);
-        // setBooking(remaining);
-        refetch();
+        const remaining = booking.filter((item) => item._id !== id);
+        setBooking(remaining);
       }
     });
   };
@@ -103,10 +81,11 @@ const MyBookings = () => {
 
   return (
     <div>
-      <div className=''>
+      <div className='flex justify-evenly'>
         <h2 className='text-3xl text-center mb-16 bg-[#ffcc05] p-2'>
           My Bookings
         </h2>
+        <h2 className='text-xl text-center mb-16 p-2'>Price: ${totalPrice}</h2>
         {/* {wishlist.length ? (
           <>
             <Link to='/dashboard/payment'>

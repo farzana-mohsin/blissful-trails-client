@@ -57,7 +57,7 @@ const PackagesCards = ({ item }) => {
   };
 
   return (
-    <div className='my-10 w-full mx-auto border-2 border-[#ffcc05]'>
+    <div className='my-10 w-full lg:w-1/3 mx-auto border-2 border-[#ffcc05]'>
       <div className='rounded-md shadow-lg w-full text-gray-900'>
         <div className='flex items-center justify-between p-3'>
           <div className='flex flex-row items-center space-x-2 ml-3'>

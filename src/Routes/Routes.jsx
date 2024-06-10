@@ -24,11 +24,13 @@ import AllPackages from "../Pages/AllPackages/AllPackages";
 import StoryDetails from "../Pages/StoryDetails/StoryDetails";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       // normal user routes
       {

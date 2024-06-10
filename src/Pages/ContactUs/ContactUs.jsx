@@ -4,9 +4,9 @@ const ContactUs = () => {
   return (
     <div className='min-h-[calc(100vh-330px)]'>
       <section className='bg-white dark:bg-gray-900'>
-        <div className='container px-6 py-12 mx-auto'>
+        <div className='container py-6 mx-auto'>
           <div className='text-center'>
-            <p className='font-medium text-[#ffcc05] dark:text-blue-400'>
+            <p className='font-medium text-[#ffcc05]'>
               <SectionTitle heading='About Us'></SectionTitle>
             </p>
 

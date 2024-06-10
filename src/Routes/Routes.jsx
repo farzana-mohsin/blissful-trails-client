@@ -10,7 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import MyBookings from "../Pages/Dashboard/Tourist/MyBookings/MyBookings";
 import Wishlist from "../Pages/Dashboard/Tourist/Wishlist/Wishlist";
 import MyProfile from "../Pages/Dashboard/TourGuide/MyProfile/MyProfile";
-
+import Community from "../Pages/Community/Community";
 import RequestToAdmin from "../Pages/Dashboard/Tourist/RequestToAdmin/RequestToAdmin";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
@@ -22,6 +22,7 @@ import GuideProfileDetails from "../Components/GuideProfileDetails/GuideProfileD
 import Payment from "../Pages/Payment/Payment";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import StoryDetails from "../Pages/StoryDetails/StoryDetails";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,14 @@ const router = createBrowserRouter([
         element: <StoryDetails></StoryDetails>,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/stories/${params.id}`),
+      },
+      {
+        path: "/community",
+        element: <Community></Community>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
       },
     ],
   },

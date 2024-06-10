@@ -31,7 +31,9 @@
 - The `Homepage` features the banner, a React tab with three tabs - Overview section has a video, Our Packages tab has three cards of packages, there is also a button to see all packages, and the third tab is Our Tour Guides that shows the Tour guides names in tabular format.
 
   - Tour Types section has four logos which navigates to package related to the tour type.
-  - Our Top Reviews section features the stories shared by the tourists. The tourist needs to log in to share a story
+  - Our Top Reviews section features the stories shared by the tourists.
+    - The stories have a View Details button and on the details page there is the option to share the review on Facebook. React-share is used. The stories are publicly available
+    - The tourist needs to log in to post a story
 
 - On the Navbar, there is About Blissful Trails dropdown which showcases three sections - Community, About Us, and Contact Us
 - My Profile dropdown will take a logged in user to the dashboard depending on their roles.
@@ -56,8 +58,6 @@
   - React date range is used to show the calendar.
 
 - An `Error page` is added with a button to go to homepage incase a user tries to go to a route that doesn't exist
-
-- Under `Manage My Posts` private route - a tab format is used for these two section. - `My Volunteer Posts` & `My Volunteer Requests`.
 
 - Integration with other tools
 

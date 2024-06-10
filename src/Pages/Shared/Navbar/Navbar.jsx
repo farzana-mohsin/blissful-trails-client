@@ -47,7 +47,7 @@ const Navbar = () => {
         >
           <li>
             <NavLink
-              to='/dashboard'
+              to='/community'
               className={({ isActive }) =>
                 isActive
                   ? "font-bold text-amber-600"
@@ -59,7 +59,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to='/manage-my-posts'
+              to='/about-us'
               className={({ isActive }) =>
                 isActive
                   ? "font-bold text-amber-600"
@@ -179,7 +179,7 @@ const Navbar = () => {
               </li>
               <li className=' lg:mr-0'>
                 <NavLink
-                  to='/need-volunteers'
+                  to='/community'
                   className={({ isActive }) =>
                     isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }
@@ -189,7 +189,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to='/add-post'
+                  to='/about-us'
                   className={({ isActive }) =>
                     isActive ? "font-bold text-[#ffcc05]" : "font-bold"
                   }

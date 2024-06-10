@@ -1,17 +1,15 @@
-import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../../Provider/AuthProvider";
 // import { MdOutlineVolunteerActivism } from "react-icons/md";
-import { FaShoppingCart } from "react-icons/fa";
+import useAuthHook from "../../../Hooks/UseAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  const [setTheme] = useState("pastel");
-  const handleToggle = (e) => {
-    if (e.target.checked) {
-      setTheme("coffee");
-    } else setTheme("pastel");
-  };
+  const { user, logOut } = useAuthHook();
+  // const [setTheme] = useState("pastel");
+  // const handleToggle = (e) => {
+  //   if (e.target.checked) {
+  //     setTheme("coffee");
+  //   } else setTheme("pastel");
+  // };
 
   const navLinks = (
     <>
@@ -19,7 +17,7 @@ const Navbar = () => {
         <NavLink
           to='/'
           className={({ isActive }) =>
-            isActive ? "font-bold text-[#ffcc05] " : "font-bold"
+            isActive ? "font-bold text-amber-600 " : "font-bold text-[#ffcc05]"
           }
         >
           Home
@@ -39,7 +37,7 @@ const Navbar = () => {
       <div className='dropdown dropdown-hover px-2'>
         <div
           tabIndex={0}
-          className='text-lg font-bold m-1 text-[#ffcc05] '
+          className='font-bold text-[#ffcc05]'
         >
           About Blissful Trails
         </div>
@@ -51,7 +49,9 @@ const Navbar = () => {
             <NavLink
               to='/dashboard'
               className={({ isActive }) =>
-                isActive ? "font-bold text-[#ffcc05]" : "font-bold"
+                isActive
+                  ? "font-bold text-amber-600"
+                  : "font-bold text-[#ffcc05]"
               }
             >
               Community
@@ -61,7 +61,9 @@ const Navbar = () => {
             <NavLink
               to='/manage-my-posts'
               className={({ isActive }) =>
-                isActive ? "font-bold text-[#ffcc05]" : "font-bold"
+                isActive
+                  ? "font-bold text-amber-600"
+                  : "font-bold text-[#ffcc05]"
               }
             >
               About Us
@@ -71,7 +73,9 @@ const Navbar = () => {
             <NavLink
               to='/footer'
               className={({ isActive }) =>
-                isActive ? "font-bold text-[#ffcc05]" : "font-bold"
+                isActive
+                  ? "font-bold text-amber-600"
+                  : "font-bold text-[#ffcc05]"
               }
             >
               Contact Us
@@ -87,7 +91,7 @@ const Navbar = () => {
           <div className='dropdown dropdown-hover px-2'>
             <div
               tabIndex={0}
-              className='text-lg font-bold m-1 text-[#ffcc05]'
+              className='font-bold text-[#ffcc05]'
             >
               My Profile
             </div>
@@ -99,7 +103,9 @@ const Navbar = () => {
                 <NavLink
                   to='/dashboard'
                   className={({ isActive }) =>
-                    isActive ? "font-bold text-[#ffcc05]" : "font-bold"
+                    isActive
+                      ? "font-bold text-amber-600"
+                      : "font-bold text-[#ffcc05]"
                   }
                 >
                   Dashboard
@@ -240,7 +246,7 @@ const Navbar = () => {
               ></div> */}
 
               <button
-                className='btn bg-[#ffcc05] hover:bg-[#727C82] text-black px-2  lg:px-4 lg:py-2 border-2 border-white text-xs lg:text-sm rounded-xl lg:mr-3'
+                className='btn bg-[#ffcc05] hover:bg-[#b86f3b] text-black px-2  lg:px-4 lg:py-2 border-2 border-white text-xs lg:text-sm rounded-xl lg:mr-3'
                 onClick={() => handleSignOut()}
               >
                 Sign Out
@@ -249,12 +255,12 @@ const Navbar = () => {
           ) : (
             <div className='flex flex-row'>
               <Link to='/login'>
-                <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#e7e9ea] border-white'>
+                <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 border-2 text-sm rounded-xl lg:ml-2 hover:bg-[#b86f3b] border-white'>
                   Login
                 </button>
               </Link>
               <Link to='/signup'>
-                <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#727C82] border-2 border-white'>
+                <button className='btn bg-[#ffcc05] text-black lg:px-4 lg:py-2 text-sm rounded-xl ml-2 hover:bg-[#b86f3b] border-2 border-white'>
                   Register
                 </button>
               </Link>

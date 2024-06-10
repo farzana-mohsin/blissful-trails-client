@@ -13,7 +13,7 @@ const TourismAndTravelTabs = () => {
   const [packages] = UsePackages();
 
   return (
-    <div>
+    <div className='pt-10 pb-3'>
       <SectionTitle
         heading='Go Exotic Places'
         subHeading='When it comes to exploring exotic places, the choices are numerous. Whether you like peaceful destinations or vibrant landscapes, we have offers for you.'
@@ -23,14 +23,24 @@ const TourismAndTravelTabs = () => {
         onSelect={(index) => setTabIndex(index)}
       >
         <TabList>
-          <Tab>OverView</Tab>
-          <Tab>Our Packages</Tab>
-          <Tab>Our Tour Guides</Tab>
+          <Tab>
+            <span className='text-amber-700 font-bold text-lg'>OverView</span>
+          </Tab>
+          <Tab>
+            <span className='text-amber-700 font-bold text-lg'>
+              Our Packages
+            </span>
+          </Tab>
+          <Tab>
+            <span className='text-amber-700 font-bold text-lg'>
+              Our Tour Guides
+            </span>
+          </Tab>
         </TabList>
         <TabPanel>
           <video
             src={videoUrl}
-            width='1400'
+            width='1600'
             height='640'
             controls='controls'
             // muted

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { Link } from "react-router-dom";
+import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 
 const TouristStorySection = () => {
   const [stories, setStories] = useState([]);
@@ -17,7 +18,11 @@ const TouristStorySection = () => {
 
   return (
     <div>
-      <section className='my-20 bg-[#ffe683] shadow-2xl'>
+      <SectionTitle
+        heading='Our Top Reviews'
+        subHeading='One inspiring story is worth traveling. Discover more about local food, tradition and history. Read the stories that make you want to travel.'
+      ></SectionTitle>
+      <section className='mt-10 bg-[#ffe683] shadow-2xl'>
         <Swiper
           navigation={true}
           modules={[Navigation]}

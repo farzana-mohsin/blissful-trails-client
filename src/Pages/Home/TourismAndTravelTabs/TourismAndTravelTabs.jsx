@@ -6,6 +6,7 @@ import PackagesCards from "../../../Components/PackagesCards/PackagesCards";
 import videoUrl from "../../../../public/4133023-uhd_3840_2160_30fps_compressed.mp4";
 import GuideProfilePage from "../../GuideProfilePage/GuideProfilePage";
 import { Link } from "react-router-dom";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const TourismAndTravelTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -13,6 +14,10 @@ const TourismAndTravelTabs = () => {
 
   return (
     <div>
+      <SectionTitle
+        heading='Go Exotic Places'
+        subHeading='When it comes to exploring exotic places, the choices are numerous. Whether you like peaceful destinations or vibrant landscapes, we have offers for you.'
+      ></SectionTitle>
       <Tabs
         selectedIndex={tabIndex}
         onSelect={(index) => setTabIndex(index)}

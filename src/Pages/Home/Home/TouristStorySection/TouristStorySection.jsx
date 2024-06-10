@@ -34,7 +34,7 @@ const TouristStorySection = () => {
                   value={story.rating}
                   readOnly
                 />
-                <h3 className='text-3xl text-orange-800 my-3'>
+                <h3 className='text-xl lg:text-3xl text-orange-800 my-3'>
                   {story.tripTitle}
                 </h3>
                 <p className='py-8 text-center text-gray-700'>{story.story}</p>

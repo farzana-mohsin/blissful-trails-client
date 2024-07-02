@@ -71,3 +71,13 @@
 - Firebase config keys have been transferred to .env.local file.
 - MongoDB username and password have been transferred to .env file with encrypted code.
 - JWT is used to protect the backend data of private routes. Middlewares were used to verify the token and email addresses. `localStorage` is used to remove the token once the user logs out.
+
+## Steps to clone a project
+
+- On GitHub.com, navigate to the main page of the repository
+- Above the list of files, click  Code
+- Copy the URL for the repository. To clone a repository using GitHub CLI, click GitHub CLI, then click the double boxes
+- Open Terminal
+- Change the current working directory to the location where you want the cloned directory
+- Type git clone, and then paste the URL you copied earlier
+- Press Enter to create your local clone

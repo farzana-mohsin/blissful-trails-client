@@ -5,7 +5,6 @@ import UseBookingReview from "../../../../Hooks/UseBookingReview";
 import { useEffect, useState } from "react";
 
 import { useLoaderData } from "react-router-dom";
-import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 
 const TourGuideTours = () => {
   // const [isAccepted, setIsAccepted] = useState(false);

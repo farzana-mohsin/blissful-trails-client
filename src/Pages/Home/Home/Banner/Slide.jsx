@@ -16,7 +16,7 @@ const Slide = ({ image, text }) => {
           </h1>
           <br />
           <Link
-            to='/all packages'
+            to='/all-packages'
             className='w-full p-2 lg:px-5 lg:py-4 mt-4 font-medium capitalize transition-colors duration-300 transform bg-[#ffcc05] rounded-lg lg:w-auto hover:bg-[#727C82] focus:outline-double focus:bg-[#f77d5c] border-2 border-white'
           >
             All Packages
